@@ -9,4 +9,8 @@ $(document).ready(function(){
           $(this).removeClass("hover");
         }
     );
+    /*Toggle search bar */
+    $('#search, .search').on('click', function() {
+        $('.search-panel').show("slow");
+    });
 });

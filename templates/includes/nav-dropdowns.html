@@ -1,0 +1,35 @@
+<!--Products Dropdown-->
+<ul id="dropdown1" class="dropdown-content nav-dark">
+    <li><a href="#">All Programs</a></li>
+    <li><a href="#!">Strength</a></li>
+    <li><a href="#!">Mobility</a></li>
+    <li><a href="#!">HIIT</a></li>
+</ul>
+<!-- Nutrition Dropdown-->
+<ul id="dropdown2" class="dropdown-content nav-dark">
+    <li><a href="#">Nutrition 101</a></li>
+    <li><a href="#!">Nutrition Plan - Standard</a></li>
+    <li><a href="#!">Nutrition Plan - Vegan</a></li>
+</ul>
+<!-- Merchandise Dropdown-->
+<ul id="dropdown3" class="dropdown-content nav-dark">
+    <li><a href="#">All Merch</a></li>
+</ul>
+<!--Community Dropdown-->
+<ul id="dropdown4" class="dropdown-content nav-dark">
+    <li><a href="#!">Our Community</a></li>
+    <li><a href="#!">My Community</a></li>
+</ul>
+<!--My Account Dropdown-->
+<ul id="dropdown5" class="dropdown-content nav-dark">
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_superuser %}
+            <li><a href="#!">Product Management</a></li>
+        {% endif %}
+        <li><a href="#!">My Profile</a></li>
+        <li><a href="{% url 'account_logout' %}">Log Out</a></li>
+    {% else %}
+        <li><a href="{% url 'account_signup' %}">Register</a></li>
+        <li><a href="{% url 'account_login' %}">Login</a></li>
+    {% endif %}
+</ul>

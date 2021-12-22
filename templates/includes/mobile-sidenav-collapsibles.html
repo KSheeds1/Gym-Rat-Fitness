@@ -1,0 +1,97 @@
+<!--Mobile Sidenav & collapsibles-->
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="{% url 'home' %}" class="brand-logo center-align"><span class="white-text">Gym Rat Fitness</span></a></li>
+    <li><a href="{% url 'home' %}"><span class="white-text">Home</span></a></li>
+    <li class="no-padding">
+        <!--Products sidenav collapsible-->
+        <ul class="collapsible collapsible-accordian">
+            <li>
+                <a class="collapsible-header"><span class="white-text">Products<i class="fas fa-caret-down fa-xs"></i></span></a>
+                <div class="collapsible-body">
+                    <ul class="nav-dark">
+                        <li><a href="#"><span class="white-text">All Programs</span></a></li>
+                        <li><a href="#!"><span class="white-text">Strong</span></a></li>
+                        <li><a href="#!"><span class="white-text">Mobility</span></a></li>
+                        <li><a href="#!"><span class="white-text">HIIT</span></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="no-padding">
+        <!--Nutrition sidenav collapsible-->
+        <ul class="collapsible collapsible-accordian">
+            <li>
+                <a class="collapsible-header"><span class="white-text">Nutrition <i class="fas fa-caret-down fa-xs"></i></span></a>
+                <div class="collapsible-body">
+                    <ul class="nav-dark">
+                        <li><a href="#!"><span class="white-text">Nutrition 101</span></a></li>
+                        <li><a href="#!"><span class="white-text">Nutrition Plan - Standard</span></a></li>
+                        <li><a href="#!"><span class="white-text">Nutrition Plan - Vegan</span></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="no-padding">
+        <!--Merchandise sidenav collapsible-->
+        <ul class="collapsible collapsible-accordian">
+            <li>
+                <a class="collapsible-header"><span class="white-text">Merchandise<i class="fas fa-caret-down fa-xs"></i></span></a>
+                <div class="collapsible-body">
+                    <ul class="nav-dark">
+                        <li><a href="#!"><span class="white-text">All Merch</span></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="no-padding">
+        <!--Community sidenav collapsible-->
+        <ul class="collapsible collapsible-accordian">
+            <li>
+                <a class="collapsible-header"><span class="white-text">Our Community<i class="fas fa-caret-down fa-xs"></i></span></a>
+                <div class="collapsible-body">
+                    <ul class="nav-dark">
+                        <li><a href="#!"><span class="white-text">Our Community</span></a></li>
+                        <li><a href="#!"><span class="white-text">My Community</span></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="no-padding">
+        <!--Accounts sidenav collapsible-->
+        <ul class="collapsible collapsible-accordian">
+            <li>
+                <a class="collapsible-header"><span class="white-text">My Account<i class="fas fa-caret-down fa-xs"></i></span></i></a>
+                <div class="collapsible-body">
+                    <ul class="nav-dark">
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
+                                <li><a href="#!"><span class="white-text">Product Management</span></a></li>
+                            {% endif %}
+                            <li><a href="#!"><span class="white-text">My Profile</span></a></li>
+                            <li><a href="{% url 'account_logout' %}"><span class="white-text">Log Out</span></a></li>
+                        {% else %}
+                            <li><a href="{% url 'account_signup' %}"><span class="white-text">Register</span></a></li>
+                            <li><a href="{% url 'account_login' %}"><span class="white-text">Login</span></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="no-padding">
+        <!--Shopping bag sidenav collapsible-->
+        <ul class="collapsible collapsible-accordian">
+            <li>
+                <a class="collapsible-header"><i class="fas fa-shopping-bag 3x white-text"></i></a>
+                <div class="collapsible-body">
+                    <ul class="nav-dark">
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>

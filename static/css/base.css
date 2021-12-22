@@ -1,9 +1,11 @@
 /*-------------------------- General */
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Raleway&display=swap');
+
 html {
     height: 100%;
 }
+
 body {
     background-color: #F7F8F2;
     display: flex;
@@ -12,30 +14,29 @@ body {
     font-family: "Raleway", sans-serif;
     color: #141414;
 }
+
 main {
     flex: 1 0 auto;
 }
+
 hr {
     border-color: #141414;
-}
-
-/*--------------------------- Taken from Bulma */
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
 }
 
 /*-------------------------- Buttons */
 .shop-now {
     background-color: #04D9D9;
 }
+
 .learn-more {
     background-color: #AED914;
 }
+
 .add-to-bag {
+    background-color: #141414;
+}
+
+#search {
     background-color: #141414;
 }
 
@@ -43,27 +44,77 @@ hr {
 .nav-dark {
     background-color: #141414;
 }
+
 .brand-logo{
     font-family: "Abril Fatface", sans-serif;
+}
+
+nav ul li a:hover {
+    background-color: #F7F8F2;
+    color: #141414;
+}
+
+nav ul li:hover {
+    background-color: #F7F8F2;
+}
+
+i.fas.fa-shopping-bag:hover {
+    color: #141414;
+}
+/*-------------------------- Nav Dropdowns */
+.dropdown-content li a {
+    background-color: #141414;
+    color: #F7F8F2;
 }
 
 /*-------------------------- Sidenav & collaspibles */
 .sidenav {
     background-color: #141414;
+    color: #F7F8F2;
 }
+
 .sidenav .collapsible-header {
     padding: 0 32px;
 }
+
 .collapsible-header i {
     width: 1.5rem;
     font-size: 0.9rem;
 }
+
 .sidenav .collapsible-body li a,
 .sidenav.fixed .collapsible-body li a {
     padding: 0 23.5px 0 42px;
 }
-.sidenav-hr {
-    width: 75%;
+
+.sidenav 
+.collapsible-header 
+i.fas.fa-shopping-bag {
+    font-size: x-large;
+}
+
+/*-------------------------- Delivery Banner */
+#delivery-banner {
+    background-color: #97A1D8;
+    margin-bottom: 0;
+}
+
+h5 #delivery-banner {
+    margin: 0.5rem 0 0.656rem 0;
+    letter-spacing: 1rem;
+}
+
+/*-------------------------- Search Functionality */
+#search:hover {
+    background-color: #F7F8F2;
+}
+
+.btn-floating i:hover {
+    color: #141414;
+}
+.search-panel {
+    display: none;
+    margin-bottom: 0;
 }
 
 /*-------------------------- Section Colours */
@@ -85,6 +136,7 @@ hr {
     z-index: 2;
     cursor: pointer;
 }
+
 #text{
     position: absolute;
     top: 50%;
@@ -99,6 +151,7 @@ hr {
 .program-cards {
     background-color: #B8B8B8;
 }
+
 .payment-cards {
     background-color: #F7F8F2;
 }
@@ -107,19 +160,39 @@ hr {
 .footer-dark {
     background-color: #141414;
 }
+
+.footer-brand a {
+    color: #F7F8F2;
+}
+
+.footer-brand a:hover {
+    color: #AED914;
+}
+
 footer ul li {
     display: inline;
     margin: 0 2px 0 2px;
 }
+
 .footer-links li a i {
     color: #fffff3;
 }
 
+.footer-links li a i:hover {
+    color: #AED914;
+}
 /*-------------------------- Media Queries */
+@media only screen and (max-width: 375px) {
+    #text {
+        font-size: 24px;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .footer-row {
         text-align: center;
     }
+
     .right-align {
         text-align: center;
     }
