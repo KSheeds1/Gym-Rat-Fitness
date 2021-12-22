@@ -1,0 +1,126 @@
+/*-------------------------- General */
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Raleway&display=swap');
+html {
+    height: 100%;
+}
+body {
+    background-color: #F7F8F2;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: "Raleway", sans-serif;
+    color: #141414;
+}
+main {
+    flex: 1 0 auto;
+}
+hr {
+    border-color: #141414;
+}
+
+/*--------------------------- Taken from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+/*-------------------------- Buttons */
+.shop-now {
+    background-color: #04D9D9;
+}
+.learn-more {
+    background-color: #AED914;
+}
+.add-to-bag {
+    background-color: #141414;
+}
+
+/*-------------------------- Navigation Bar */
+.nav-dark {
+    background-color: #141414;
+}
+.brand-logo{
+    font-family: "Abril Fatface", sans-serif;
+}
+
+/*-------------------------- Sidenav & collaspibles */
+.sidenav {
+    background-color: #141414;
+}
+.sidenav .collapsible-header {
+    padding: 0 32px;
+}
+.collapsible-header i {
+    width: 1.5rem;
+    font-size: 0.9rem;
+}
+.sidenav .collapsible-body li a,
+.sidenav.fixed .collapsible-body li a {
+    padding: 0 23.5px 0 42px;
+}
+.sidenav-hr {
+    width: 75%;
+}
+
+/*-------------------------- Section Colours */
+.payments {
+    background-color: #97A1D8;
+}
+
+/*-------------------------- Overlay & text */
+#overlay {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.603); 
+    z-index: 2;
+    cursor: pointer;
+}
+#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+/*-------------------------- Cards */
+.program-cards {
+    background-color: #B8B8B8;
+}
+.payment-cards {
+    background-color: #F7F8F2;
+}
+
+/*-------------------------- Footer */
+.footer-dark {
+    background-color: #141414;
+}
+footer ul li {
+    display: inline;
+    margin: 0 2px 0 2px;
+}
+.footer-links li a i {
+    color: #fffff3;
+}
+
+/*-------------------------- Media Queries */
+@media only screen and (max-width: 600px) {
+    .footer-row {
+        text-align: center;
+    }
+    .right-align {
+        text-align: center;
+    }
+}
