@@ -24,6 +24,42 @@
         <title>Gym Rat Fitness {% block extra_title %}{% endblock %}</title>
     </head>
     <body>
+        <header>
+            <!--Base Navigation-->
+            <nav class="nav-extended nav-dark">
+                <div class="nav-wrapper">
+                    <a href="{% url 'home' %}" class="brand-logo left">Gym Rat Fitness</a>
+                    <!--Sidenav trigger-->
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a class="btn-floating btn-small search" id="search"><i class="fas fa-search"></i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Programs <i
+                                    class="fas fa-caret-down fa-sm"></i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Nutrition <i
+                                    class="fas fa-caret-down fa-sm"></i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown3">Merchandise <i
+                                    class="fas fa-caret-down fa-sm"></i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown4">Community <i
+                                    class="fas fa-caret-down fa-sm"></i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown5">My Account <i
+                                    class="fas fa-caret-down fa-sm"></i></a></li>
+                        <li><a class="#" href="#!"><i class="fas fa-shopping-bag left"></i></a></li>
+                    </ul>
+                </div>
+                <!--Search Functionality-->
+                <div class="row black">
+                    <form action="" method="GET" class="col s12">
+                        <div class="valign-wrapper">
+                            <div class="input-field center-align col s12 xl12">
+                                <input type="text" name="q" pattern="" required>
+                                <label class="label-icon" for="search"><i class="fas fa-search fa-sm white-text">Search..</i></label>
+                            </div>
+                            <button type="submit" class="btn-small white-text center-align"><i class="fas fa-search"></i></button>
+                        </div>   
+                    </form>
+                </div>
+            </nav>
+        </header>
 
         {% if messages %}
             <div class="container"></div>
@@ -38,6 +74,27 @@
         </main>
 
         {% block footer %}
+            <footer class="page-footer footer-dark">
+                <div class="row footer-row">
+                    <div class="col l3 m3 s12">
+                        <h5 class="white-text">Gym Rat Dictionaries</h5>
+                        <p><em>Debunking exercise terminology</em></p>
+                    </div>
+                    <div class="col l6 m6 s12">
+                        <h5 class="white-text center-align">Socials</h5>
+                        <ul class="footer-links center-align">
+                            <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank" title="Facebook Link" rel="noopener"><i class="fab fa-facebook-f fa-lg"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.tiktok.com/" target="_blank" title="TikTok Link" rel="noopener"><i class="fab fa-tiktok fa-lg"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank" title="Instagram Link" rel="noopener"><i class="fab fa-instagram fa-lg"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.youtube.com/" target="_blank" title="YouTube Link" rel="noopener"><i class="fab fa-youtube fa-lg"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col l3 m3 s12 right-align">
+                        <h5 class="white-text">Copyright</h5>
+                        <p><em>Katie Sheedy, 2022</em></p>
+                    </div>
+                </div>
+            </footer>
         {% endblock %}
 
         {% block corejs %}
