@@ -25,19 +25,54 @@ hr {
 
 /*-------------------------- Buttons */
 .shop-now {
+    color: #141414;
     background-color: #04D9D9;
+    
+}
+
+.shop-now:hover {
+    background-color: #141414;
+    color: #04D9D9 !important;
 }
 
 .learn-more {
     background-color: #AED914;
 }
 
+.learn-more:hover {
+    background-color: #141414;
+    color: #AED914 !important;
+}
+
 .add-to-bag {
     background-color: #141414;
 }
 
+.add-to-bag:hover {
+    background-color: #F7F8F2;
+    color: #141414 !important;
+}
+
 #search {
     background-color: #141414;
+}
+
+.delete {
+    background-color: #960535;
+}
+
+.delete:hover {
+    background-color: #F7F8F2;
+    color: #960535 !important;
+}
+
+.edit {
+    background-color: #6200ea;
+}
+
+.edit:hover {
+    background-color: #F7F8F2;
+    color: #6200ea !important;
 }
 
 /*-------------------------- Navigation Bar */
@@ -156,6 +191,9 @@ h5 #delivery-banner {
     background-color: #F7F8F2;
 }
 
+.products .card-content {
+    padding: 25px 25px 20px 25px;
+}
 /*-------------------------- Footer */
 .footer-dark {
     background-color: #141414;
