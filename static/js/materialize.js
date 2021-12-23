@@ -14,4 +14,6 @@ $(document).ready(function(){
         $('.search-panel').show("slow");
     });
     $('.parallax').parallax();
+    $('select').formSelect();
+    $('.fixed-action-btn').floatingActionButton();
 });

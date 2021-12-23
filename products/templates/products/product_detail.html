@@ -18,7 +18,9 @@
                 <p>€{{ product.price }}</p>
                 {% if product.category %}
                     <p class="category-tag">
-                        <a href="#"><i class="fas fa-tag"></i> {{ product.category.friendly_name }}</a>
+                        <a href="{% url 'products' %}?category={{ product.category.name }}">
+                            <i class="fas fa-tag"></i> {{ product.category.friendly_name }}
+                        </a>
                     </p>
                 {% endif %}
                 {% if product.rating %}
