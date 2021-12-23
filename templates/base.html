@@ -53,11 +53,10 @@
             {% include 'includes/mobile-sidenav-collapsibles.html' %}
             <!--Search Functionality-->
             <div class="row search-panel nav-dark">
-                <form action="" method="GET" class="col s12">
+                <form action="{% url 'products' %}" method="GET" class="col s12">
                     <div class="valign-wrapper">
                         <div class="input-field center-align col s12 xl12">
-                            <input type="text" name="q" pattern="" required>
-                            <label class="label-icon" for="search"><i class="fas fa-search fa-sm white-text">Search..</i></label>
+                            <input type="text" name="q" placeholder="Search" class="white-text" required>
                         </div>
                         <button type="submit" class="btn white-text"><i class="fas fa-search"></i></button>
                     </div>   
