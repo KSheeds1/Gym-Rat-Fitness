@@ -9,7 +9,7 @@
                 <a class="collapsible-header"><span class="white-text">Products<i class="fas fa-caret-down fa-xs"></i></span></a>
                 <div class="collapsible-body">
                     <ul class="nav-dark">
-                        <li><a href="#"><span class="white-text">All Programs</span></a></li>
+                        <li><a href="{% url 'products' %}?category=workout_programs"><span class="white-text">All Programs</span></a></li>
                         <li><a href="#!"><span class="white-text">Strong</span></a></li>
                         <li><a href="#!"><span class="white-text">Mobility</span></a></li>
                         <li><a href="#!"><span class="white-text">HIIT</span></a></li>
@@ -25,7 +25,7 @@
                 <a class="collapsible-header"><span class="white-text">Nutrition <i class="fas fa-caret-down fa-xs"></i></span></a>
                 <div class="collapsible-body">
                     <ul class="nav-dark">
-                        <li><a href="#!"><span class="white-text">Nutrition 101</span></a></li>
+                        <li><a href="{% url 'products' %}?category=nutrition_plans"><span class="white-text">Nutrition 101</span></a></li>
                         <li><a href="#!"><span class="white-text">Nutrition Plan - Standard</span></a></li>
                         <li><a href="#!"><span class="white-text">Nutrition Plan - Vegan</span></a></li>
                     </ul>
@@ -40,7 +40,7 @@
                 <a class="collapsible-header"><span class="white-text">Merchandise<i class="fas fa-caret-down fa-xs"></i></span></a>
                 <div class="collapsible-body">
                     <ul class="nav-dark">
-                        <li><a href="#!"><span class="white-text">All Merch</span></a></li>
+                        <li><a href="{% url 'products' %}?category=merchandise"><span class="white-text">All Merch</span></a></li>
                     </ul>
                 </div>
             </li>

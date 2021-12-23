@@ -1,19 +1,19 @@
 <!--Products Dropdown-->
 <ul id="dropdown1" class="dropdown-content nav-dark">
-    <li><a href="#">All Programs</a></li>
-    <li><a href="#!">Strength</a></li>
+    <li><a href="{% url 'products' %}?category=workout_programs">All Programs</a></li>
+    <li><a href="#">Strength</a></li>
     <li><a href="#!">Mobility</a></li>
     <li><a href="#!">HIIT</a></li>
 </ul>
 <!-- Nutrition Dropdown-->
 <ul id="dropdown2" class="dropdown-content nav-dark">
-    <li><a href="#">Nutrition 101</a></li>
+    <li><a href="{% url 'products' %}?category=nutrition_plans">Nutrition 101</a></li>
     <li><a href="#!">Nutrition Plan - Standard</a></li>
     <li><a href="#!">Nutrition Plan - Vegan</a></li>
 </ul>
 <!-- Merchandise Dropdown-->
 <ul id="dropdown3" class="dropdown-content nav-dark">
-    <li><a href="#">All Merch</a></li>
+    <li><a href="{% url 'products' %}?category=merchandise">All Merch</a></li>
 </ul>
 <!--Community Dropdown-->
 <ul id="dropdown4" class="dropdown-content nav-dark">
