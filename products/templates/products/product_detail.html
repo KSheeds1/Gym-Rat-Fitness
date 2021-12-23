@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6 l6 xl6 product-image">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="responsive-img">
+                {% else %}
+                    <img src="{{ MEDIS_URL }}noimg.png" alt="{{ product.name }}" class="responsive-img">
+                {% endif %}
+            </div>
+            <div class="col s12 m6 l6 xl6">
+                <h2>{{ product.name }}</h2>
+                <hr>
+                <p>€{{ product.price }}</p>
+                {% if product.category %}
+                    <p class="category-tag">
+                        <a href="#"><i class="fas fa-tag"></i> {{ product.category.friendly_name }}</a>
+                    </p>
+                {% endif %}
+                {% if product.rating %}
+                    <p class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i>{{ product.rating }} / 5</p>
+                {% else %}
+                    <p class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i>No Rating</p>
+                {% endif %}
+                <ul class="collapsible">
+                    <!--CRUD OPS only available to superusers-->
+                    {% if request.user.is_superuser %}
+                        <li>
+                            <div class="collapsible-header">Product Management</div>
+                            <div class="collapsible-body center-align">
+                                <a class="btn edit" href="#"><b>Edit Product</b></a>
+                                <a class="btn delete" href="#"><b>Delete Product</b></a>
+                            </div>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <div class="collapsible-header">Product Description</div>
+                        <div class="collapsible-body">{{ product.description }}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -67,12 +67,12 @@ hr {
 }
 
 .edit {
-    background-color: #6200ea;
+    background-color: #97A1D8;
 }
 
 .edit:hover {
     background-color: #F7F8F2;
-    color: #6200ea !important;
+    color: #97A1D8 !important;
 }
 
 /*-------------------------- Navigation Bar */
@@ -196,7 +196,37 @@ h5 #delivery-banner {
 }
 
 .products .card-content {
-    padding: 25px 25px 20px 25px;
+    padding: 20px 25px 25px 25px;
+}
+
+/*-------------------------- Category */
+p.category-tag i {
+    color: #AED914;
+}
+
+p.category-tag a {
+    color: #AED914;
+}
+/*-------------------------- Products */
+p.card-title a {
+    color: #141414;
+}
+.product-image {
+    margin-top: 2.3733333333rem;
+}
+
+li div.collapsible-header {
+    background-color: #B8B8B8;
+    color: #141414;
+}
+
+li div.collapsible-body {
+    background-color: #B8B8B8;
+    color: #141414;
+}
+
+ul.collaspible li {
+    list-style: none;
 }
 /*-------------------------- Footer */
 .footer-dark {

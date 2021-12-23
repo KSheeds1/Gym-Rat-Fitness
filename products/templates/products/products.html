@@ -4,11 +4,11 @@
 {% block content %}
     <section>
         <div class="parallax-container">
-            <img src="images/parallax2.jpg">
+            <div class="parallax"><img src="#" class="responsive-img"></div>
             <div id="overlay">
-                <div id="text" class="center-align">Take the first step in your new journey
+                <div class="text" class="flow-text center-align">Everything you need in one app
                     <br>
-                    <a href="#" class="btn-small shop-now black-text"><b>Shop Now</b></a>
+                    <a href="#" class="btn-small shop-now"><b>Shop Nutrition Now</b></a>
                 </div>
             </div>
         </div>
@@ -21,28 +21,37 @@
                         <div class="card large products hoverable">
                             {% if product.image %}
                                 <div class="card-image">
-                                    <img class="responsive-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    <a href="{% url 'product_detail' product.id %}">
+                                        <img class="responsive-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    </a>
                                 </div>
                             {% else %}
                                 <div class="card-image">
-                                    <img class="responsive-img" src="{{ MEDIA_URL }}noimg.png" alt="{{ product.name }}">
+                                    <a href="{% url 'product_detail' product.id %}">
+                                        <img class="responsive-img" src="{{ MEDIA_URL }}noimg.png" alt="{{ product.name }}">
+                                    </a>
                                 </div>
                             {% endif %}
                             <div class="card-content">
-                                <p class="card-title">{{ product.name }}</p>
-                                <p>${{ product.price }}</p>
+                                <p class="card-title"><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></p>
+                                <p>€{{ product.price }}</p>
+                                {% if product.category %}
+                                    <p class="category-tag">
+                                        <a href="#"><i class="fas fa-tag"></i> {{ product.category.friendly_name }}</a>
+                                    </p>
+                                {% endif %}
                                 {% if product.rating %}
-                                    <small class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i>{{ product.rating }} / 5</small>
+                                    <p class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i>{{ product.rating }} / 5</p>
                                 {% else %}
-                                    <small class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i>No Rating</small>
+                                    <p class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i>No Rating</p>
                                 {% endif %}
                             </div>
                             <div class="card-action">
                                 <a class="btn add-to-bag" href="#"><i class="fas fa-shopping-bag prefix"></i> Add to Bag</a>
                                 {% if request.user.is_superuser %}
-                                    <a class="btn edit" href="#"><b>Edit</b></a>
-                                    <a class="btn delete" href="#"><b>Delete</b></a>
-                                {% endif %}
+                                    <a class="btn edit" href="#"><i class="far fa-edit prefix"></i> Edit</a>
+                                    <a class="btn delete" href="#"><i class="far fa-trash-alt prefix"></i> Delete</a>
+                                    {% endif %}
                             </div>
                         </div>
                     </div>
