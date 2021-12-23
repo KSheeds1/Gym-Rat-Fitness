@@ -13,4 +13,5 @@ $(document).ready(function(){
     $('#search, .search').on('click', function() {
         $('.search-panel').show("slow");
     });
+    $('.parallax').parallax();
 });
