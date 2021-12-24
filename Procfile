@@ -1,0 +1,1 @@
+web: gunicorn gym_rat_fitness.wsgi:application
