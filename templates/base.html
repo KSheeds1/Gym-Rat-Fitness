@@ -45,7 +45,7 @@
                                     class="fas fa-caret-down fa-sm"></i></a></li>
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdown5">My Account <i
                                     class="fas fa-caret-down fa-sm"></i></a></li>
-                        <li><a class="#" href="#!"><i class="fas fa-shopping-bag left"></i></a></li>
+                        <li><a class="{% url 'view_bag' %}" href="{% url 'view_bag' %}"><i class="fas fa-shopping-bag left"></i></a></li>
                     </ul>
                     {% include 'includes/nav-dropdowns.html' %}
                 </div>

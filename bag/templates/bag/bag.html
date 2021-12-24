@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="row header-row">
+        <div class="col">
+            <h2 class="header category-header"><b>Shopping</b><br><em>Bag</em></h2>
+        </div>
+    </div>
+    <hr>
+    {% if bag_items %}
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 l6 xl3 product-image">
+                    {% if item.product.image %}
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="responsive-img">
+                    {% else %}
+                        <img src="{{ MEDIS_URL }}noimg.png" alt="{{ item.product.name }}" class="responsive-img">
+                    {% endif %}
+                </div>
+                <div class="col s12 m6 l6 xl9">
+                    <h5>{{ item.product.name }}</h5>
+                    <p>{{ item.product.sku|upper }}</p>
+                    <p>€{{ item.product.price }}</p>
+                    <a class="btn delete" href="#"><i class="far fa-trash-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col s12">
+                <p class="shopping">Your bag is empty. Let's change that!</p>
+                <a href="{% url 'products' %}" class="shop-now btn">Keep Shopping</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -262,6 +262,10 @@ h6.grey-text.text-darken-3.lighten-3.left-align.product-count {
     background-color: #141414;
 }
 
+/*-------------------------- Shopping Bag */
+.shopping {
+    font-size: 20px;
+}
 /*-------------------------- Footer */
 .footer-dark {
     background-color: #141414;
