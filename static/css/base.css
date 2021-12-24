@@ -334,6 +334,11 @@ footer ul li {
         color: #F7F8F2;
     }
 
+    select {
+        background-color: #141414;
+        color: #F7F8F2;
+    }
+
     .dropdown-content li>span {
         background-color: rgba(20, 20, 20, 1.2);
         color: #F7F8F2;

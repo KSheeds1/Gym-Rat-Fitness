@@ -22,8 +22,8 @@
                 {% for c in current_categories %}
                     <h2 class="header category-header"><b>Shop</b><br><em>{{ c.friendly_name }}</em></h2>
                 {% endfor %}
-                {% if search_term or current_sorting != 'None_None' %}
-                    <h2 class="header category-header"><b>Shop</b></h2>
+                {% if search_term %}
+                    <h2 class="header category-header"><b>Shop</b><br><em>{{ search_term }}</em></h2>
                 {% endif %}
             </div>
         </div>
@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col s12 m6 push-m6 l6 push-l6 xl6 push-xl6">
                 <div class="input-field col s12 hide-on-med-and-down">
-                    <select id="sort-selector" class="custom-select {% if current_sorting != 'None_None' %}grey-text text-darken-1{% else %}black-text{% endif %}">
+                    <select id="sort-selector" class="browser-default custom-select {% if current_sorting != 'None_None' %}grey-text text-darken-1{% else %}black-text{% endif %}">
                         <option value="reset"  {% if current_sorting == 'None_None' %}selected{% endif %}disabled selected>Filter by..</option>
                         <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                         <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
@@ -99,7 +99,54 @@
             {% endfor %}
         </div>
     </section>
+    <!--Floating action button-->
     <div class="fixed-action-btn">
-        <a href="#" data-target="slide-out" class="btn-floating btn-large hide-on-large-only sidenav-trigger"><i class="fas fa-filter fa-2x filter-sidenav"></i></a>
+        <a class="btn-floating white">
+            <i class="fas fa-arrow-circle-up fa-2x shop-now"></i>
+        </a>
+        <a href="#" data-target="slide-out" class="btn-floating hide-on-large-only sidenav-trigger">
+            <i class="fas fa-filter fa-2x filter-sidenav"></i>
+        </a>            
     </div>
+{% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    <!--Scroll to the top-->
+    <script type="text/javascript">
+		$('.scroll-up').on('click', function() {
+            $('html, body').animate({scrollTop:0}, '300');
+        });
+	</script>
+    <!--Disable hoverEnabled option on floating action button for mobile & tablet viewports-->
+    <script type="text/javascript">
+     if (window.matchMedia("(max-width: 600px)").matches) {
+         $('.fixed-action-btn').floatingActionButton({
+             hoverEnabled: false
+         });
+     }
+    </script>
+    <!--Sort selectbox selection-->
+    <script type="text/javascript">
+        $('#sort-selector').change(function(){
+            var selector = $(this);
+            var currentUrl = new URL(window.location);
+
+            var selectedVal = selector.val();
+            if(selectedVal != "reset"){
+                var sort = selectedVal.split("_")[0];
+                var direction = selectedVal.split("_")[1];
+
+                currentUrl.searchParams.set("sort", sort);
+                currentUrl.searchParams.set("direction", direction);
+
+                window.location.replace(currentUrl);
+            } else {
+                currentUrl.searchParams.delete("sort");
+                currentUrl.searchParams.delete("direction");
+
+                window.location.replace(currentUrl);
+            }
+        });
+    </script>
 {% endblock %}
