@@ -4,26 +4,88 @@
 
 {% block content %}
     <div class="row header-row">
-        <div class="col">
+        <div class="col s12 m6">
             <h2 class="header category-header"><b>Shopping</b><br><em>Bag</em></h2>
+            {% if bag_items %}
+                <h6><b>{{ bag_items|length }} items</b></h6>
+            {% endif %}
+        </div>
+        <div class="col s12 m6 l6 xl4 right">
+            {% if bag_items %}
+                <ul class="collapsible bag-collapsible">
+                    <li>
+                        <div class="collapsible-header"><b>Bag Summary:</b></div>
+                        <div class="collapsible-body">
+                            <h6>Bag Total: €{{ total|floatformat:2 }}</h6>
+                            <h6>Delivery: €{{ delivery|floatformat:2 }}</h6>
+                            <div class="divider"></div>
+                            <h5>Grand Total: €{{ grand_total|floatformat:2 }}</h5>
+                            {% if free_delivery_delta > 0 %}
+                                <p> You could get free delivery by spending just 
+                                    <strong>{{ free_delivery_delta }}</strong> more!
+                                </p>
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
+                <a href="#" class="btn checkout"><i class="fas fa-lock"></i><b> Secure Checkout</b></a>              
+            {% endif %}
         </div>
     </div>
     <hr>
     {% if bag_items %}
-        <div class="container">
+        <div class="container bag-container">
             <div class="row">
-                <div class="col s12 m6 l6 xl3 product-image">
-                    {% if item.product.image %}
-                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="responsive-img">
-                    {% else %}
-                        <img src="{{ MEDIS_URL }}noimg.png" alt="{{ item.product.name }}" class="responsive-img">
-                    {% endif %}
-                </div>
-                <div class="col s12 m6 l6 xl9">
-                    <h5>{{ item.product.name }}</h5>
-                    <p>{{ item.product.sku|upper }}</p>
-                    <p>€{{ item.product.price }}</p>
-                    <a class="btn delete" href="#"><i class="far fa-trash-alt"></i></a>
+                {% for item in bag_items %}
+                    <div class="col s12 hide-on-med-and-up">
+                        {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="responsive-img">
+                        {% else %}
+                            <img src="{{ MEDIA_URL }}noimg.png" alt="{{ item.product.name }}" class="responsive-img item-image">
+                        {% endif %}
+                    </div>
+                    <div class="col s12 hide-on-med-and-up">
+                        <h5>{{ item.product.name }}</h5>
+                        <p>{{ item.product.sku|upper }}</p>
+                        <p>€{{ item.product.price }}</p>
+                        <p><b>Quantity:</b> {{ item.quantity }}</p>
+                        <a class="btn-large delete" href="#"><i class="far fa-trash-alt"></i></a>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="col m7 push-m5 l7 push-l5 xl6 push-xl6 hide-on-small-only">
+                        <h5>{{ item.product.name }}</h5>
+                        <p>{{ item.product.sku|upper }}</p>
+                        <p>€{{ item.product.price }}</p>
+                        <p><b>Quantity:</b> {{ item.quantity }}</p>
+                        <a class="btn-large delete" href="#"><i class="far fa-trash-alt"></i></a>
+                    </div>
+                    <div class="col m5 pull-m7 l5 pull-l7 xl6 pull-xl6 hide-on-small-only">
+                        {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="responsive-img item-image">
+                        {% else %}
+                            <img src="{{ MEDIA_URL }}noimg.png" alt="{{ item.product.name }}" class="responsive-img item-image">
+                        {% endif %}
+                    </div>
+                    <div class="col m12 l12 xl">
+                        <div class="divider"></div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col s12 m12 l12 xl12">
+                    <h4 class="header category-header"><b>Bag</b><br><em>Summary:</em></h4>
+                    <div class="divider"></div>
+                    <div class="right">
+                        <h6>Bag Total: €{{ total|floatformat:2 }}</h6>
+                        <h6>Delivery: €{{ delivery|floatformat:2 }}</h6>
+                        <h5>Grand Total: €{{ grand_total|floatformat:2 }}</h5>
+                        {% if free_delivery_delta > 0 %}
+                            <p> You could get free delivery by spending just 
+                                <strong>{{ free_delivery_delta }}</strong> more!
+                            </p>
+                        {% endif %}
+                        <a href="#" class="btn checkout"><i class="fas fa-lock"></i><b> Secure Checkout</b></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -31,7 +93,7 @@
         <div class="row">
             <div class="col s12">
                 <p class="shopping">Your bag is empty. Let's change that!</p>
-                <a href="{% url 'products' %}" class="shop-now btn">Keep Shopping</a>
+                <a href="{% url 'products' %}" class="shop-now btn">Shop Now</a>
             </div>
         </div>
     {% endif %}

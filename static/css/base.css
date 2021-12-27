@@ -23,6 +23,10 @@ hr {
     border-color: #141414;
 }
 
+.divider {
+    background-color: #B8B8B8;
+    margin-top: 1rem;
+}
 /*-------------------------- Buttons */
 .shop-now {
     color: #141414;
@@ -90,6 +94,16 @@ hr {
     background-color: #141414;
     color: #F7F8F2;
     font-weight: bold;
+}
+
+.checkout {
+    background-color: #97A1D8;
+    color: #141414;
+}
+
+.checkout:hover {
+    background-color: #141414;
+    color: #97A1D8;
 }
 
 /*-------------------------- Navigation Bar */
@@ -290,7 +304,7 @@ h6.grey-text.text-darken-3.lighten-3.left-align.product-count {
     background-color: #141414;
 }
 
-/*-------------------------- Shopping Bag */
+/*-------------------------- Product Details */
 .shopping {
     font-size: 20px;
 }
@@ -307,6 +321,16 @@ input[type=number]:not(.browser-default) {
 
 .btn-flat:hover {
     background-color: #F7F8F2;
+}
+
+/*-------------------------- Shopping Bag */
+.bag-container {
+    width: 90%;
+}
+.item-image {
+    height: 50% !important;
+    overflow: hidden;
+    margin-top: 1rem;
 }
 
 /*-------------------------- Footer */
@@ -402,6 +426,13 @@ footer ul li {
     .select-dropdown.dropdown-content li.selected {
         background-color: #3a3939;
     }
+
+}
+
+@media only screen and (min-width: 600px) {
+    ul.collapsible.bag-collapsible {
+        margin-top: 2.3733333333rem;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -415,3 +446,4 @@ footer ul li {
         margin-left: 0px;
     }
 }
+
