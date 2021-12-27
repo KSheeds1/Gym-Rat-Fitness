@@ -51,10 +51,16 @@ hr {
 .add-to-bag:hover {
     background-color: #F7F8F2;
     color: #141414 !important;
+    font-weight: bold;
 }
 
 #search {
     background-color: #141414;
+}
+
+#search:hover {
+    background-color: #F7F8F2;
+    color: #141414;
 }
 
 .delete {
@@ -73,6 +79,17 @@ hr {
 .edit:hover {
     background-color: #F7F8F2;
     color: #97A1D8 !important;
+}
+
+.keep-shopping {
+    background-color: #B8B8B8;
+    color: #141414;
+}
+
+.keep-shopping:hover {
+    background-color: #141414;
+    color: #F7F8F2;
+    font-weight: bold;
 }
 
 /*-------------------------- Navigation Bar */
@@ -95,6 +112,14 @@ nav ul li:hover {
 
 i.fas.fa-shopping-bag:hover {
     color: #141414;
+}
+
+.i.fas.fa-chevron-left {
+    padding-right: 2rem;
+}
+
+input.add-to-bag {
+    font-family: "Raleway", sans-serif;
 }
 /*-------------------------- Nav Dropdowns */
 .dropdown-content li a {
@@ -157,6 +182,9 @@ h5 #delivery-banner {
     background-color: #97A1D8;
 }
 
+.body-colour {
+    background-color: #F7F8F2;
+}
 /*-------------------------- Overlay & text */
 #overlay {
     position: absolute;
@@ -224,12 +252,12 @@ p.card-title a {
 }
 
 li div.collapsible-header {
-    background-color: #B8B8B8;
+    background-color: #F7F8F2;
     color: #141414;
 }
 
 li div.collapsible-body {
-    background-color: #B8B8B8;
+    background-color: #F7F8F2;
     color: #141414;
 }
 
@@ -266,6 +294,21 @@ h6.grey-text.text-darken-3.lighten-3.left-align.product-count {
 .shopping {
     font-size: 20px;
 }
+
+input[type=number]:not(.browser-default) {
+    width: 35%;
+    height: 3rem;
+    border-bottom: none;
+}
+
+.i.fas.fa-plus {
+    color: #141414;
+}
+
+.btn-flat:hover {
+    background-color: #F7F8F2;
+}
+
 /*-------------------------- Footer */
 .footer-dark {
     background-color: #141414;
@@ -291,7 +334,14 @@ footer ul li {
 .footer-links li a i:hover {
     color: #AED914;
 }
+
 /*-------------------------- Media Queries */
+@media only screen and (max-width: 360px) {
+    .add-to-bag {
+        margin-top: 4px;
+    }
+}
+
 @media only screen and (max-width: 375px) {
     #text {
         font-size: 24px;
@@ -305,6 +355,7 @@ footer ul li {
     .delete {
         margin-top: 2px;
     }
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -350,5 +401,17 @@ footer ul li {
 
     .select-dropdown.dropdown-content li.selected {
         background-color: #3a3939;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    input[type=number]:not(.browser-default) {
+        width: 30%;
+        height: 3rem;
+        border-bottom: none;
+    }
+
+    .input-field.inline {
+        margin-left: 0px;
     }
 }
