@@ -48,16 +48,55 @@
                         <h5>{{ item.product.name }}</h5>
                         <p>{{ item.product.sku|upper }}</p>
                         <p>€{{ item.product.price }}</p>
-                        <p><b>Quantity:</b> {{ item.quantity }}</p>
-                        <a class="btn-large delete" href="#"><i class="far fa-trash-alt"></i></a>
+                        <form class="form" action="#" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-field input-field-{{ item.item_id }} inline">
+                                        <button class="decrement-qty btn-flat btn-small body-colour 
+                                            decrement-qty_{{ item.item_id }}" data-item_id="{{ item.item_id }}">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input class="qty_input id_qty_{{ item.item_id }} center-align" type="number"
+                                            name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                            data-item_id="{{ item.item_id }}">
+                                        <button class="increment-qty btn-flat btn-small body-colour
+                                            increment-qty_{{ item.item_id }}" data-item_id="{{ item.item_id }}">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                        <a class="update-link hidden"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <a class="btn delete remove-item remove_{{ item.item_id }}"><i class="far fa-trash-alt"> Remove</i></a>
                         <div class="divider"></div>
                     </div>
                     <div class="col m7 push-m5 l7 push-l5 xl6 push-xl6 hide-on-small-only">
                         <h5>{{ item.product.name }}</h5>
                         <p>{{ item.product.sku|upper }}</p>
                         <p>€{{ item.product.price }}</p>
-                        <p><b>Quantity:</b> {{ item.quantity }}</p>
-                        <a class="btn-large delete" href="#"><i class="far fa-trash-alt"></i></a>
+                        <form class="form" action="#" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-field input-field-{{ item.item_id }} inline">
+                                        <button class="decrement-qty btn-flat btn-small body-colour 
+                                            decrement-qty_{{ item.item_id }}" data-item_id="{{ item.item_id }}">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input class="qty_input id_qty_{{ item.item_id }} center-align" type="number"
+                                            name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                            data-item_id="{{ item.item_id }}">
+                                        <button class="increment-qty btn-flat btn-small body-colour
+                                            increment-qty_{{ item.item_id }}" data-item_id="{{ item.item_id }}">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <a class="btn delete remove-item remove_{{ item.item_id }}"><i class="far fa-trash-alt"></i> Remove</a>
                     </div>
                     <div class="col m5 pull-m7 l5 pull-l7 xl6 pull-xl6 hide-on-small-only">
                         {% if item.product.image %}
@@ -97,4 +136,28 @@
             </div>
         </div>
     {% endif %}
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script type="text/javascript">
+    // Update quantity on click
+    $('.increment-qty', '.decrement-qty').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('class').split('remove_')[1];
+        var url = `/bag/remove/${itemId}`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+
+        $.post(url, data)
+         .done(function() {
+            location.reload();
+        });
+    })
+</script>
 {% endblock %}
