@@ -27,7 +27,7 @@ hr {
     background-color: #B8B8B8;
     margin-top: 1rem;
 }
-/*-------------------------- Buttons */
+/*-------------------------- Buttons & links */
 .shop-now {
     color: #141414;
     background-color: #04D9D9;
@@ -104,6 +104,20 @@ hr {
 .checkout:hover {
     background-color: #141414;
     color: #97A1D8;
+}
+
+a.update {
+    font-size: bold;
+    background-color: #97A1D8;
+    color: #F7F8F2;
+    cursor: pointer;
+    display: inline-block;
+}
+
+a.update:hover {
+    background-color: #F7F8F2;
+    color: #97A1D8;
+    cursor: pointer;
 }
 
 /*-------------------------- Navigation Bar */
@@ -333,6 +347,13 @@ input[type=number]:not(.browser-default) {
     margin-top: 1rem;
 }
 
+.row .quantity-col {
+    padding: 0;
+}
+
+.quantity-row {
+    margin-bottom: 0;
+}
 /*-------------------------- Footer */
 .footer-dark {
     background-color: #141414;

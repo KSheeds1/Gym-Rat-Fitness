@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load bag_tools %}
 
 {% block content %}
     <div class="row header-row">
@@ -47,11 +47,11 @@
                     <div class="col s12 hide-on-med-and-up">
                         <h5>{{ item.product.name }}</h5>
                         <p>{{ item.product.sku|upper }}</p>
-                        <p>€{{ item.product.price }}</p>
-                        <form class="form" action="#" method="POST">
+                        <p> €{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                        <form class="form update-form" action="{% url 'adjust_bag' item.item_id %}" method="POST">
                             {% csrf_token %}
-                            <div class="row">
-                                <div class="col">
+                            <div class="row quantity-row">
+                                <div class="col quantity-col">
                                     <div class="input-field input-field-{{ item.item_id }} inline">
                                         <button class="decrement-qty btn-flat btn-small body-colour 
                                             decrement-qty_{{ item.item_id }}" data-item_id="{{ item.item_id }}">
@@ -64,22 +64,22 @@
                                             increment-qty_{{ item.item_id }}" data-item_id="{{ item.item_id }}">
                                             <i class="fas fa-plus"></i>
                                         </button>
-                                        <a class="update-link hidden"></a>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        <a class="btn delete remove-item remove_{{ item.item_id }}"><i class="far fa-trash-alt"> Remove</i></a>
+                        <a class="update btn">Update Quantity</a>
+                        <a class="btn delete remove-item remove_{{ item.item_id }}"><i class="far fa-trash-alt"></i> Remove</a>
                         <div class="divider"></div>
                     </div>
                     <div class="col m7 push-m5 l7 push-l5 xl6 push-xl6 hide-on-small-only">
                         <h5>{{ item.product.name }}</h5>
                         <p>{{ item.product.sku|upper }}</p>
-                        <p>€{{ item.product.price }}</p>
-                        <form class="form" action="#" method="POST">
+                        <p>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                        <form class="form update-form" action="{% url 'adjust_bag' item.item_id %}" method="POST">
                             {% csrf_token %}
-                            <div class="row">
-                                <div class="col">
+                            <div class="row quantity-row">
+                                <div class="col quantity-col">
                                     <div class="input-field input-field-{{ item.item_id }} inline">
                                         <button class="decrement-qty btn-flat btn-small body-colour 
                                             decrement-qty_{{ item.item_id }}" data-item_id="{{ item.item_id }}">
@@ -96,6 +96,7 @@
                                 </div>
                             </div>
                         </form>
+                        <a class="update btn">Update Quantity</a>
                         <a class="btn delete remove-item remove_{{ item.item_id }}"><i class="far fa-trash-alt"></i> Remove</a>
                     </div>
                     <div class="col m5 pull-m7 l5 pull-l7 xl6 pull-xl6 hide-on-small-only">
@@ -140,9 +141,10 @@
 
 {% block extra_js %}
 {{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
 <script type="text/javascript">
     // Update quantity on click
-    $('.increment-qty', '.decrement-qty').click(function(e) {
+    $('.update').click(function(e) {
         var form = $(this).prev('.update-form');
         form.submit();
     })
@@ -151,7 +153,7 @@
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('class').split('remove_')[1];
-        var url = `/bag/remove/${itemId}`;
+        var url = `/bag/remove/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
 
         $.post(url, data)
