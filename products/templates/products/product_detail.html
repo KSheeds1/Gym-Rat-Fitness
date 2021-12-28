@@ -53,18 +53,18 @@
                     {% csrf_token %}
                     <div class="row">
                         <div class="col">
-                            <div class="input-field inline">
-                                <a class="decrement-qty btn-flat btn-small body-colour decrement-qty_{{ product.id }}"
-                                    data-item-id="{{ product.id }}">
+                            <div class="input-field input-field-{{ product.id }} inline">
+                                <button class="decrement-qty btn-flat btn-small body-colour 
+                                    decrement-qty_{{ product.id }}" data-item_id="{{ product.id }}">
                                     <i class="fas fa-minus"></i>
-                                </a>
-                                <input class="qty_input center-align" id="id_qty_{{ product.id }}" type="number"
+                                </button>
+                                <input class="qty_input id_qty_{{ product.id }} center-align" type="number"
                                     name="quantity" value="1" min="1" max="99"
                                     data-item_id="{{ product.id }}">
-                                <a class="increment-qty btn-flat btn-small body-colour rounded-0 increment-qty_{{ product.id }}"
-                                    data-item_id="{{ product.id }}">
+                                <button class="increment-qty btn-flat btn-small body-colour
+                                    increment-qty_{{ product.id }}" data-item_id="{{ product.id }}">
                                     <i class="fas fa-plus"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                         <div class="col s12">
@@ -80,4 +80,9 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}
