@@ -354,6 +354,141 @@ input[type=number]:not(.browser-default) {
 .quantity-row {
     margin-bottom: 0;
 }
+
+/*-------------------------- Custom Toasts */
+.message-container{
+    position: fixed;
+    top: 72px;
+    right: 10px;
+    z-index: 99999999999;
+}
+
+.toast-capper {
+    height: 3px;
+}
+
+.capper-success {
+    background-color: #76ff03;
+}
+
+.capper-warning {
+    background-color: #e65100;
+}
+
+.capper-info {
+    background-color: #6a1b9a;
+}
+
+.capper-error {
+    background-color: #960535;
+}
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent; 
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -10px;
+    right: 36px;
+}
+
+/* Messages level class colours */
+.arrow-success {
+    border-bottom-color: #76ff03;
+}
+
+.arrow-warning {
+    border-bottom-color: #e65100;
+}
+
+.arrow-info {
+    border-bottom-color: #6a1b9a;
+}
+
+.arrow-error {
+    border-bottom-color: #b71c1c;
+}
+
+.custom-toast {
+    visibility: hidden;
+    max-width: 350px;
+    overflow: visible;
+    font-size: .875rem;
+    background-color: #F7F8F2;
+    color: #141414;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0 0.5rem 0.85rem rgba(0 0 0 / 35%);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    border-radius: 0.25rem;
+}
+
+.toast-header{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    color: #141414;
+    background-color: #F7F8F2;
+    background-clip: padding-box;
+    border-bottom: 1px solid #B8B8B8;
+}
+
+.close {
+    float: right !important;
+}
+
+.toast-body {
+    padding: 0.75rem;
+}
+
+.toast-divider {
+    background-color: #B8B8B8;
+    height: 1px;
+}
+
+.bag-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #e3e4dc;
+}
+
+.toast-img {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.custom-toast.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+  
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+  
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
 /*-------------------------- Footer */
 .footer-dark {
     background-color: #141414;

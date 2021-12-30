@@ -70,7 +70,21 @@
         </header>
 
         {% if messages %}
-            <div class="container"></div>
+            <div class="message-container">
+                {% for message in messages %}
+                    {% with message.level as level %}
+                        {% if level == 40 %}  <!--ERROR-->
+                            {% include 'includes/toasts/toast_error.html' %}
+                        {% elif level == 30 %}  <!--Warning-->
+                            {% include 'includes/toasts/toast_warning.html' %}
+                        {% elif level == 25 %} <!--Success-->
+                            {% include 'includes/toasts/toast_success.html' %}
+                        {% else %} <!--info-->
+                            {% include 'includes/toasts/toast_info.html' %}
+                        {% endif %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
         {% endif %}
 
         {% block page_header %}
@@ -85,8 +99,8 @@
             <footer class="page-footer footer-dark">
                 <div class="row footer-row">
                     <div class="col l3 m3 s12">
-                        <h5 class="white-text footer-brand"><a href="{% url 'home' %}">Gym Rat Dictionaries</a></h5>
-                        <p><em>Debunking exercise terminology</em></p>
+                        <h5 class="white-text footer-brand"><a href="{% url 'home' %}">Gym Rat Fitness</a></h5>
+                        <p><em>Welcome to the rest of your life</em></p>
                     </div>
                     <div class="col l6 m6 s12">
                         <h5 class="white-text center-align">Socials</h5>
@@ -115,6 +129,14 @@
         {% endblock %}
 
         {% block extra_js %}
+        <script type="text/javascript">
+            setTimeout(() => { 
+                const toasts = document.querySelectorAll('.custom-toast');
+                [...toasts].forEach(toast => {toast.style.display = 'none'})
+            }
+            , 90000);
+            
+        </script>
         {% endblock %}
 
     </body>
