@@ -1,0 +1,49 @@
+/*-----------------------Order Form*/
+fieldset{
+    border-style: solid;
+    border-color: #b8b8b8;
+    border-width: 1px;
+}
+
+.submit-button {
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.adjust-bag {
+    background-color: #AED914;
+    color: #141414;
+}
+
+.adjust-bag:hover {
+    background-color: #141414;
+    color: #AED914;
+}
+
+.complete-order{
+    background-color: #141414;
+    color: #F7F8F2;
+}
+
+.complete-order:hover {
+    background-color: #F7F8F2;
+    color: #141414;
+}
+
+[type="checkbox"]+span:not(.lever) {
+    padding-left: 25px;
+}
+
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    background-color: #AED914;
+    border: solid 2px #AED914;
+}
+
+/*-----------------------Order Summary*/
+.order-item-img {
+    width: 100%;
+}
+
+.free-del {
+    background-color: #97A1D8;
+}

@@ -28,7 +28,7 @@
                         </div>
                     </li>
                 </ul>
-                <a href="#" class="btn checkout"><i class="fas fa-lock"></i><b> Secure Checkout</b></a>              
+                <a href="{% url 'checkout' %}" class="btn checkout"><i class="fas fa-lock"></i><b> Secure Checkout</b></a>              
             {% endif %}
         </div>
     </div>
@@ -124,7 +124,7 @@
                                 <strong>{{ free_delivery_delta }}</strong> more!
                             </p>
                         {% endif %}
-                        <a href="#" class="btn checkout"><i class="fas fa-lock"></i><b> Secure Checkout</b></a>
+                        <a href="{% url 'checkout' %}" class="btn checkout"><i class="fas fa-lock"></i><b> Secure Checkout</b></a>
                     </div>
                 </div>
             </div>
