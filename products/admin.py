@@ -7,15 +7,10 @@ class ProductAdmin(admin.ModelAdmin):
         'sku',
         'name',
         'category',
-        'description',
         'price',
+        'sub_price',
         'rating',
         'image',
-        'length_of_time',
-        'training_styles',
-        'workout_duration',
-        'program_goals',
-        'nutrition_plan_features',
     )
     ordering = ('name',)
 
