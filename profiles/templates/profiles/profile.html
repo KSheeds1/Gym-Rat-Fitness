@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="row header-row">
+        <div class="col s12 m6">
+            <h2 class="header category-header"><b>My</b><br><em>Profile</em></h2></h2>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col s12 m3 l3 offset l7 xl3">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header"><h5 class="header"><b>Delivery</b><em>Info:</em></h5></div>
+                    <div class="collapsible-body">
+                        <form id="profile-update-form" action="{% url 'profile' %}" method="POST"></form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m3 l3 offset l7 xl3">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header"><h5 class="header"><b>Order</b><em>History:</em></h5></div>
+                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
