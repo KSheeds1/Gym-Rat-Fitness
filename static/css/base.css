@@ -41,6 +41,7 @@ hr {
 
 .learn-more {
     background-color: #AED914;
+    color: #141414;
 }
 
 .learn-more:hover {
@@ -489,6 +490,85 @@ input[type=number]:not(.browser-default) {
     to {bottom: 0; opacity: 0;}
 }
 
+/*-------------------------- Allauth Elements */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    opacity: unset;
+}
+
+/* Allauth form formatting */
+
+.allauth-form-inner-content p {
+    margin-top: 1.5rem;
+    color: #6c757d;
+}
+
+.allauth-form-inner-content input {
+    border-color: #141414;
+    border-radius: 0;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #B8B8B8;
+}
+
+.allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+	/* btn */
+	display: inline-block;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    color: #F7F8F2;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #141414;
+    border: 1px solid #141414;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+   
+}
+
+.allauth-form-inner-content button:hover,
+.allauth-form-inner-content input[type='submit']:hover {	
+	color: #141414;
+    background-color: #F7F8F2;
+    border-color: #141414;
+}
+
+.redirect-btn {
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+    color: #141414;
+    background-color: #F7F8F2;
+    text-transform: unset;
+}
+
+.redirect-btn:hover {
+    background-color: #141414;
+    color: #F7F8F2;
+}
+
+.buttons-collection {
+    margin-top: 5px;
+}
 /*-------------------------- Footer */
 .footer-dark {
     background-color: #141414;
@@ -603,3 +683,8 @@ footer ul li {
     }
 }
 
+@media (min-width: 1200px) {
+    .allauth-container {
+      max-width: 80%;
+    }
+  }
