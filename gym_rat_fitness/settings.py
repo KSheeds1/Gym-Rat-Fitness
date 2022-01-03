@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout',
+    'profiles',
 
     # Other:
     'storages',
@@ -204,6 +205,10 @@ if 'USE_AWS' in os.environ:
 # Stripe
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
+STRIPE_TEST_PUBLIC_KEY = 'pk_test_51KCZhDE1f916O9nA0XYbjRYc0N5LjEekOufF2fiQIsiVZykuYrvXZh37KWmR7BFILz31AvbnDU9n3YjFo4twurHS00iWcPnlU6'
+STRIPE_TEST_SECRET_KEY = 'sk_test_51KCZhDE1f916O9nAQ67EdY4FWELfyHMyNGrYhu8SsgDYSDRfTcrl5vYJ0S4tnW4Nh0Elri3BkeHalQXTAI96Udt500HTgJXwH0'
+STRIPE_LIVE_MODE = False  # Change to TRUE in PRODUCTION
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
