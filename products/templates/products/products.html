@@ -30,7 +30,7 @@
         <hr>
         <div class="row">
             <div class="col s12 m6 push-m6 l6 push-l6 xl6 push-xl6">
-                <div class="input-field col s12 hide-on-med-and-down">
+                <div class="input-field col s12 hide-on-small-only">
                     <select id="sort-selector" class="browser-default custom-select {% if current_sorting != 'None_None' %}grey-text text-darken-1{% else %}black-text{% endif %}">
                         <option value="reset"  {% if current_sorting == 'None_None' %}selected{% endif %}disabled selected>Filter by..</option>
                         <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
@@ -103,7 +103,7 @@
         <a class="btn-floating white">
             <i class="fas fa-arrow-circle-up fa-2x shop-now"></i>
         </a>
-        <a href="#" data-target="slide-out" class="btn-floating hide-on-large-only sidenav-trigger">
+        <a href="#" data-target="slide-out" class="btn-floating hide-on-med-and-up sidenav-trigger">
             <i class="fas fa-filter fa-2x filter-sidenav"></i>
         </a>            
     </div>

@@ -121,6 +121,16 @@ a.update:hover {
     cursor: pointer;
 }
 
+.cancel {
+    background-color: #141414;
+    color: #F7F8F2;
+}
+
+.cancel:hover {
+    background-color: #F7F8F2;
+    color: #141414;
+}
+
 /*-------------------------- Navigation Bar */
 .nav-dark {
     background-color: #141414;
@@ -298,13 +308,9 @@ h6.grey-text.text-darken-3.lighten-3.left-align.product-count {
     padding-top: 25px;
 }
 
-/*-------------------------- Filter select box*/
+/*-------------------------- Select box*/
 .select-wrapper .caret {
     fill: #141414;
-}
-
-.select-wrapper input.select-dropdown {
-    color: #3a3939;
 }
 
 .dropdown-content li>span {
@@ -336,6 +342,19 @@ input[type=number]:not(.browser-default) {
 
 .btn-flat:hover {
     background-color: #F7F8F2;
+}
+
+/*-------------------------- Product Admin */
+textarea#id_description.textarea {
+    border: none;
+    border-bottom: 1px solid #b8b8b8;
+}
+
+input[name=price]:not(.browser-default),
+input[name=rating]:not(.browser-default),
+input[name=sub_price]:not(.browser-default),
+input[name=sub_price]:not(.browser-default) {
+    border-bottom: 1px solid #b8b8b8;
 }
 
 /*-------------------------- Shopping Bag */
@@ -569,6 +588,7 @@ input[type=number]:not(.browser-default) {
 .buttons-collection {
     margin-top: 5px;
 }
+
 /*-------------------------- Footer */
 .footer-dark {
     background-color: #141414;
@@ -618,6 +638,34 @@ footer ul li {
 
 }
 
+@media only screen and (max-width: 414px) {
+    .filter-sidenav {
+        background-color: #AED914;
+    }
+
+    .select-wrapper .caret {
+        fill: #F7F8F2;
+    }
+
+    .select-wrapper input.select-dropdown {
+        color: #F7F8F2;
+    }
+
+    select {
+        background-color: #141414 !important;
+        color: #F7F8F2 !important;
+    }
+
+    .dropdown-content li>span {
+        background-color: rgba(20, 20, 20, 1.2);
+        color: #F7F8F2;
+    }
+
+    .select-dropdown.dropdown-content li.selected {
+        background-color: #3a3939;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .text {
         font-size: 20px;
@@ -636,32 +684,21 @@ footer ul li {
         align-content: center !important;
         text-align: center;
     }
+    /*-------------------------Admin Select box*/
+    
 
-    .filter-sidenav {
-        background-color: #AED914;
+    textarea#id_description.textarea {
+        border: none;
+        border-bottom: 1px solid #b8b8b8;
+    }
+    
+    input[name=price]:not(.browser-default),
+    input[name=rating]:not(.browser-default),
+    input[name=sub_price]:not(.browser-default),
+    input[name=sub_price]:not(.browser-default) {
+        border-bottom: 1px solid #b8b8b8;
     }
 
-    .select-wrapper .caret {
-        fill: #F7F8F2;
-    }
-
-    .select-wrapper input.select-dropdown {
-        color: #F7F8F2;
-    }
-
-    select {
-        background-color: #141414;
-        color: #F7F8F2;
-    }
-
-    .dropdown-content li>span {
-        background-color: rgba(20, 20, 20, 1.2);
-        color: #F7F8F2;
-    }
-
-    .select-dropdown.dropdown-content li.selected {
-        background-color: #3a3939;
-    }
 
 }
 
@@ -669,6 +706,7 @@ footer ul li {
     ul.collapsible.bag-collapsible {
         margin-top: 2.3733333333rem;
     }
+    
 }
 
 @media only screen and (max-width: 768px) {
@@ -681,10 +719,23 @@ footer ul li {
     .input-field.inline {
         margin-left: 0px;
     }
+
+    textarea#id_description.textarea {
+        border: none;
+        border-bottom: 1px solid #b8b8b8;
+    }
+    
+    input[name=price]:not(.browser-default),
+    input[name=rating]:not(.browser-default),
+    input[name=sub_price]:not(.browser-default),
+    input[name=sub_price]:not(.browser-default) {
+        border-bottom: 1px solid #b8b8b8;
+    }
+
 }
 
 @media (min-width: 1200px) {
     .allauth-container {
       max-width: 80%;
     }
-  }
+}

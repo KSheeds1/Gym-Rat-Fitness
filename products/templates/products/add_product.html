@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="row header-row">
+        <div class="col s12 m6">
+            <h2 class="header category-header"><b>Product</b><br><em>Management</em></h2>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6 l6 xl8">
+                <h5><b>Add a Product</b></h5>
+                <p>Please fill out the form to complete your order</p>
+                <div class="divider"></div>
+                <form action="{% url 'add_product' %}" id="add-product" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {% if field.name != 'image' %}
+                            {{ field | as_crispy_field }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    {% endfor %}
+                    <div class="submit-button right">
+                        <a href="{% url 'products' %}" class="btn cancel">
+                            <span>Cancel</span>
+                        </a>
+                        <button id="submit-button" class="btn learn-more">
+                            <span>Add Product</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

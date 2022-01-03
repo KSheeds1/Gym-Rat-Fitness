@@ -1,6 +1,6 @@
 <ul id="slide-out" class="sidenav">
     <div class="input-field filter-select col s12">
-        <select id="sort-selector" class="browser-default custom-select {% if current_sorting != 'None_None' %}white{% else %}white-text{% endif %}">
+        <select id="sort-selector" class="browser-default custom-select {% if current_sorting != 'None_None' %}white-text{% else %}white-text{% endif %}">
             <option value="reset"  {% if current_sorting == 'None_None' %}selected{% endif %}disabled selected>Filter by..</option>
             <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
             <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>

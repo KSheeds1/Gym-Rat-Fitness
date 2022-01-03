@@ -69,7 +69,7 @@
                     <ul class="nav-dark">
                         {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
-                                <li><a href="#!"><span class="white-text">Product Management</span></a></li>
+                                <li><a href="{% url 'add_product' %}"><span class="white-text">Product Management</span></a></li>
                             {% endif %}
                             <li><a href="{% url 'profile' %}"><span class="white-text">My Profile</span></a></li>
                             <li><a href="{% url 'account_logout' %}"><span class="white-text">Log Out</span></a></li>

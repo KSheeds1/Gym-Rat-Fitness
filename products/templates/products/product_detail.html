@@ -15,7 +15,9 @@
             <div class="col s12 m6 l6 xl6">
                 <h2>{{ product.name }}</h2>
                 <hr>
-                <p>€{{ product.price }}</p>
+                {% if product.price and not product.sub_price %}
+                    <p>€{{ product.price }}</p>
+                {% endif %}
                 {% if product.category %}
                     <p class="category-tag">
                         <a href="{% url 'products' %}?category={{ product.category.name }}">
@@ -31,8 +33,15 @@
                 <p class="hide-on-small-only">{{ product.description }}</p>
                 <!--CRUD OPS only available to superusers-->
                 {% if request.user.is_superuser %}
-                    <a class="btn edit" href="#"><b>Edit Product</b></a>
-                    <a class="btn delete" href="#"><b>Delete Product</b></a>
+                <ul class="collapsible hide-on-small-only">
+                    <li>
+                        <div class="collapsible-header">Product Management</div>
+                        <div class="collapsible-body center-align">
+                            <a class="btn edit" href="#"><b>Edit Product</b></a>
+                            <a class="btn delete" href="#"><b>Delete Product</b></a>
+                        </div>
+                    </li>
+                </ul>
                 {% endif %}
                 <ul class="collapsible hide-on-med-and-up">
                     {% if request.user.is_superuser %}
@@ -51,6 +60,24 @@
                 </ul>
                 <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                     {% csrf_token %}
+                    <h5>Select your access</h5>
+                    <hr>
+                    {% if product.sub_price %}
+                        <p class="inline">
+                            <label for="selected_price">
+                            <input type="radio" name="selected_price" id="selected_price" data-item_id="{{ product.id }}"
+                                value="{{ product.sub_price }}" class="filled-in selected_check id_select_{{ product.id }}" />
+                            <span><b>Subscription: €{{ product.sub_price }}</b> for 6 months access</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label for="selected_price">
+                                <input type="radio" name="selected_price" id="selected_price" data-item_id="{{ product.id }}"
+                                    value="{{ product.price }}" class="filled-in selected_check id_select_{{ product.id }}" />
+                                <span><b>Standard: €{{ product.price }}</b> for {{ product.length_of_time }} access</span>
+                            </label>
+                        </p>
+                    {% endif %}
                     <div class="row">
                         <div class="col">
                             <div class="input-field input-field-{{ product.id }} inline">
@@ -72,7 +99,7 @@
                                 <span class="valign-wrapper"><i class="fas fa-chevron-left"></i> Keep Shopping</span>
                                 
                             </a>
-                            <input type="submit" onclick="launch_toast()" class="add-to-bag btn valign-wrapper" value="Add to Bag">
+                            <input type="submit" class="add-to-bag btn valign-wrapper" value="Add to Bag">
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </div>
@@ -85,4 +112,11 @@
 {% block extra_js %}
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
+
+<script type="text/javascript">
+    $('input[name=selected_price]').on('click', function(e){
+        $('input[name=selected_price]:checked').val();
+    });
+</script>
+
 {% endblock %}

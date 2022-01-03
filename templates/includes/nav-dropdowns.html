@@ -24,7 +24,7 @@
 <ul id="dropdown5" class="dropdown-content nav-dark">
     {% if request.user.is_authenticated %}
         {% if request.user.is_superuser %}
-            <li><a href="#!">Product Management</a></li>
+            <li><a href="{% url 'add_product' %}">Product Management</a></li>
         {% endif %}
         <li><a href="{% url 'profile' %}">My Profile</a></li>
         <li><a href="{% url 'account_logout' %}">Log Out</a></li>
