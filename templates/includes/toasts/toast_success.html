@@ -8,7 +8,7 @@
     <div class="toast-body black-text">
         <p><b>{{ message }}</b></p>
         <div class="divider toast-divider"></div>
-        {% if grand_total %}
+        {% if grand_total and not on_profile_page %}
             <p><b>{{ product_count }} item(s)</b> added to your bag</p>
             <div class="bag-notification-wrapper">
                 {% for item in bag_items %}

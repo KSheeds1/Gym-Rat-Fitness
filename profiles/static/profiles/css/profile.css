@@ -1,0 +1,28 @@
+#profile-update-form .form-control {
+    color: #141414;
+}
+
+#profile-update-form input::placeholder {
+    color: #b8b8b8;
+}
+
+.select-wrapper .caret {
+    fill: #b8b8b8;
+}
+
+.select-wrapper input.select-dropdown {
+    color: #b8b8b8;
+}
+
+.dropdown-content li>span {
+    background-color: #F7F8F2;
+    color: #141414;
+}
+
+.dropdown-content li>span:hover {
+    background-color: #97A1D8;
+}
+
+.select-dropdown.dropdown-content li.selected:not(:first-child) {
+    background-color: #141414;
+}

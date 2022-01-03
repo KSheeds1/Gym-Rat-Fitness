@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="row header-row">
@@ -10,25 +13,45 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col s12 m3 l3 offset l7 xl3">
+        <div class="col s12 m4 l4 offset l7 xl3">
             <ul class="collapsible">
                 <li>
                     <div class="collapsible-header"><h5 class="header"><b>Delivery</b><em>Info:</em></h5></div>
                     <div class="collapsible-body">
-                        <form id="profile-update-form" action="{% url 'profile' %}" method="POST"></form>
+                        <form id="profile-update-form" action="{% url 'profile' %}" method="POST">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button class="btn-small learn-more left-align">Update Information</button>
+                        </form>
                     </div>
                 </li>
             </ul>
         </div>
-        <div class="col s12 m3 l3 offset l7 xl3">
+        <div class="col s12 m4 l4 offset l7 xl3">
             <ul class="collapsible">
                 <li>
                     <div class="collapsible-header"><h5 class="header"><b>Order</b><em>History:</em></h5></div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    <div class="collapsible-body">{{ orders }}</div>
                 </li>
             </ul>
         </div>
-        {{ profile }}
     </div>
 {% endblock %}
 
+{% block extra_js %}
+{{ block.super }}
+<script type="text/javascript">
+    let countrySelected = $('.select-wrapper input.select-dropdown').val();
+    if(!countrySelected) {
+        $('.select-wrapper input.select-dropdown').css('color', '#b8b8b8');
+    };
+    $('.select-wrapper input.select-dropdown').change(function() {
+        countrySelected = $(this).val();
+        if(!countrySelected) {
+            $(this).css('color', '#b8b8b8');
+        } else {
+            $(this).css('color', '#000');
+        }
+    });
+</script>
+{% endblock %}
