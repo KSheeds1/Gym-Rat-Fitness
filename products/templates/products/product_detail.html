@@ -37,7 +37,7 @@
                     <li>
                         <div class="collapsible-header">Product Management</div>
                         <div class="collapsible-body center-align">
-                            <a class="btn edit" href="#"><b>Edit Product</b></a>
+                            <a class="btn edit" href="{% url 'edit_product' product.id %}"><b>Edit Product</b></a>
                             <a class="btn delete" href="#"><b>Delete Product</b></a>
                         </div>
                     </li>
@@ -48,7 +48,7 @@
                         <li>
                             <div class="collapsible-header">Product Management</div>
                             <div class="collapsible-body center-align">
-                                <a class="btn edit" href="#"><b>Edit Product</b></a>
+                                <a class="btn edit" href="{% url 'edit_product' product.id %}"><b>Edit Product</b></a>
                                 <a class="btn delete" href="#"><b>Delete Product</b></a>
                             </div>
                         </li>
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                         <div class="col s12">
-                            <a href="{% url 'products' %}" class="btn keep-shopping">
+                            <a href="{{ request.META.HTTP_REFERER }}" class="btn keep-shopping">
                                 <span class="valign-wrapper"><i class="fas fa-chevron-left"></i> Keep Shopping</span>
                                 
                             </a>

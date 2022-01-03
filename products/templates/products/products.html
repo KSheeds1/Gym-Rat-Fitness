@@ -89,7 +89,7 @@
                         </div>
                         <div class="card-action">
                             {% if request.user.is_superuser %}
-                                <a class="btn edit" href="#"><i class="far fa-edit prefix"></i> Edit</a>
+                                <a class="btn edit" href="{% url 'edit_product' product.id %}"><i class="far fa-edit prefix"></i> Edit</a>
                                 <a class="btn delete" href="#"><i class="far fa-trash-alt prefix"></i> Delete</a>
                             {% endif %}
                         </div>
