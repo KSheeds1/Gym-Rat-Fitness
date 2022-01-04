@@ -16,4 +16,5 @@ $(document).ready(function(){
     $('.parallax').parallax();
     $('select').formSelect();
     $('.fixed-action-btn').floatingActionButton();
+    $('.modal').modal();
 });

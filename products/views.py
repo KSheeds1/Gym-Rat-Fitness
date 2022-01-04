@@ -62,7 +62,7 @@ def get_products(request):
 
 
 def product_detail(request, product_id):
-    """ """
+    """ To show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
 
@@ -80,11 +80,10 @@ def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            product = form.save()
             messages.success(request, 'Successfully added new \
                              product.')
-            return redirect(reverse('add_product'))
-
+            return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request,
                            ('Failed to add product. Please ensure '
@@ -111,7 +110,7 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated \
                              product!')
             return redirect(reverse('product_detail',
-                                    args=[product_id]))
+                                    args=[product.id]))
         else:
             messages.error(request, 'Failed to update product. Please \
                            ensure the form is valid.')
@@ -126,3 +125,10 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, 'Product deleted')
+    return redirect(reverse('home'))

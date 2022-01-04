@@ -5,6 +5,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
+            <!--Product image-->
             <div class="col s12 m6 l6 xl6 product-image">
                 {% if product.image %}
                     <img src="{{ product.image.url }}" alt="{{ product.name }}" class="responsive-img">
@@ -12,6 +13,7 @@
                     <img src="{{ MEDIA_URL }}noimg.png" alt="{{ product.name }}" class="responsive-img">
                 {% endif %}
             </div>
+            <!--Product breakdown/details-->
             <div class="col s12 m6 l6 xl6">
                 <h2>{{ product.name }}</h2>
                 <hr>
@@ -38,18 +40,25 @@
                         <div class="collapsible-header">Product Management</div>
                         <div class="collapsible-body center-align">
                             <a class="btn edit" href="{% url 'edit_product' product.id %}"><b>Edit Product</b></a>
-                            <a class="btn delete" href="#"><b>Delete Product</b></a>
+                            <a class="delete btn modal-trigger" data-target="#modal-delete{{product.id}}"
+                                    href="#modal-delete{{product.id}}">Delete
+                            </a>
+                            {% include 'products/includes/modal-delete.html'%}
                         </div>
                     </li>
                 </ul>
                 {% endif %}
+                <!--Mobile collapsible for Admin CRUD OPs and Product description-->
                 <ul class="collapsible hide-on-med-and-up">
                     {% if request.user.is_superuser %}
                         <li>
                             <div class="collapsible-header">Product Management</div>
                             <div class="collapsible-body center-align">
                                 <a class="btn edit" href="{% url 'edit_product' product.id %}"><b>Edit Product</b></a>
-                                <a class="btn delete" href="#"><b>Delete Product</b></a>
+                                <a class="delete btn modal-trigger" data-target="#modal-delete{{product.id}}"
+                                    href="#modal-delete{{product.id}}">Delete
+                                </a>
+                                {% include 'products/includes/modal-delete.html'%}
                             </div>
                         </li>
                     {% endif %}
@@ -118,5 +127,9 @@
         $('input[name=selected_price]:checked').val();
     });
 </script>
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.modal').modal();
+    });
+</script>
 {% endblock %}

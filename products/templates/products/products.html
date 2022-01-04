@@ -3,6 +3,7 @@
 
 {% block content %}
     <section>
+        <!--Category dependent parallax & header-->
         <div class="parallax-container">
             {% for c in current_categories %}
                 <div class="parallax"><img src="{{ c.image.url }}" class="responsive-img"></div>
@@ -28,6 +29,7 @@
             </div>
         </div>
         <hr>
+        <!--Sort selector-->
         <div class="row">
             <div class="col s12 m6 push-m6 l6 push-l6 xl6 push-xl6">
                 <div class="input-field col s12 hide-on-small-only">
@@ -43,6 +45,7 @@
                         <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
                     </select>
                 </div>
+                <!--Mobile sort selector-->
                 {% include 'products/includes/filter-sidenav.html' %}
             </div>
             <div class="col s12 m6 pull-m6 l6 pull-l6 xl6 pull-xl6">
@@ -55,6 +58,7 @@
             </div>
         </div>
         <div class="row">
+            <!--Product cards-->
             {% for product in products %}
                 <div class="col s12 m6 lg3 xl4">
                     <div class="card large products hoverable">
@@ -89,8 +93,12 @@
                         </div>
                         <div class="card-action">
                             {% if request.user.is_superuser %}
-                                <a class="btn edit" href="{% url 'edit_product' product.id %}"><i class="far fa-edit prefix"></i> Edit</a>
-                                <a class="btn delete" href="#"><i class="far fa-trash-alt prefix"></i> Delete</a>
+                                <a class="btn edit" href="{% url 'edit_product' product.id %}">Edit</a>
+                                <!-- Modal Trigger -->
+                                <a class="delete btn modal-trigger" data-target="#modal-delete{{product.id}}"
+                                    href="#modal-delete{{product.id}}">Delete
+                                </a>
+                                {% include 'products/includes/modal-delete.html'%}
                             {% endif %}
                         </div>
                     </div>
@@ -146,6 +154,11 @@
 
                 window.location.replace(currentUrl);
             }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.modal').modal();
         });
     </script>
 {% endblock %}

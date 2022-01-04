@@ -512,6 +512,16 @@ input[name=image-clear]:not(.browser-default) {
     to {bottom: 0; opacity: 0;}
 }
 
+/*-------------------------- Modals */
+.modal-header {
+    background-color: #141414;
+    padding: 15px 15px 2px;
+}
+
+.modal-content {
+    background-color: #F7F8F2;
+}
+
 /*-------------------------- Allauth Elements */
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
