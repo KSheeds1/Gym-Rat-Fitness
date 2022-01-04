@@ -344,10 +344,14 @@ input[type=number]:not(.browser-default) {
     background-color: #F7F8F2;
 }
 
-/*-------------------------- Product Admin */
+/*-------------------------- Product Admin - form */
 textarea#id_description.textarea {
     border: none;
     border-bottom: 1px solid #b8b8b8;
+}
+
+textarea#id_description.textarea:focus {
+    border: none;
 }
 
 input[name=price]:not(.browser-default),
@@ -359,7 +363,10 @@ input[name=sub_price]:not(.browser-default) {
 
 input[name=image-clear]:not(.browser-default) {
     position: inherit;
+    pointer-events: auto;
 }
+
+
 /*-------------------------- Shopping Bag */
 .bag-container {
     width: 90%;
@@ -526,6 +533,7 @@ input[name=image-clear]:not(.browser-default) {
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
     opacity: unset;
+    pointer-events: auto;
 }
 
 /* Allauth form formatting */
