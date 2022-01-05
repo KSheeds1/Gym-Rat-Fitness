@@ -8,55 +8,54 @@
         <div id="overlay">
             <div class="text" class="flow-text center-align">Take the first step in your new journey
                 <br>
-                <a href="#" class="btn-small shop-now"><b>Shop Programs Now</b></a>
+                <a href="{% url 'products' %}?category=workout_programs" class="btn-small shop-now"><b>Shop Programs Now</b></a>
             </div>
         </div>
     </div>
-    <div class="row">
-        <h2 class="header center-align">Our Programs</h2>
-        <p class="grey-text text-darken-3 lighten-3 center-align">
-            Here at Gym Rat Fitness we offer a variety of programs to suit you goals. It's important 
-            at any stage of your health and fitness journey, that you select a program that works for you.
-            Checkout the headlines for each of our programs below.
-        </p>
-        <div class="center-align">
-            <div class="col s12 m12 l4 xl4">
-                <div class="card program-card-img medium hoverable">
-                    <div class="card-image">
-                        <img src="{{ MEDIA_URL }}mobility-program.jpg" class="responsive-img">
-                    </div>
-                    <div id="overlay">
-                        <div class="text" class="flow-text center-align">Mobility
-                            <br>
-                            <a href="#" class="btn-small learn-more black-text">Learn More</a>
-                        </div>
-                    </div>
+    <section class="p-sect">
+        <div class="row">
+            <div class="col s12">
+                <h2 class="header center-align">Our Programs</h2>
+                <p class="grey-text text-darken-3 lighten-3 center-align">
+                    Here at Gym Rat Fitness we offer a variety of programs to suit you goals. It's important 
+                    at any stage of your health and fitness journey, that you select a program that works for you.
+                    Checkout the headlines for each of our programs below.
+                </p>
+                <div class="center-align">
+                    {% for product in products %}
+                        {% if product.category.name == 'workout_programs' %}
+                            <div class="col s12 m12 l4 xl4">
+                                <div class="card program-card-img medium hoverable">
+                                    <div class="card-image">
+                                        <img src="{{ product.image.url }}" class="responsive-img">
+                                    </div>
+                                    <div id="overlay">
+                                        <div class="text" class="flow-text center-align">{{ product.name }}
+                                            <br>
+                                            <a href="{% url 'product_detail' product.id %}" class="btn-small learn-more black-text">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
-            <div class="col s12 m12 l4 xl4">
-                <div class="card program-card-img medium hoverable">
-                    <div class="card-image">
-                        <img src="{{ MEDIA_URL }}strength-program.jpg" class="responsive-img">
-                    </div>
-                    <div id="overlay">
-                        <div class="text" class="flow-text center-align">Strength
-                            <br>
-                            <a href="#" class="btn-small learn-more black-text">Learn More</a>
-                        </div>
-                    </div>
+        </div>
+    </section>
+    <div class="section programs">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12 xl6">
+                    <h2 class="header left-align">Choosing the right program or plan for <em>you</em></h2>
+                    <p class="grey-text text-darken-3 lighten-3 left-align">
+                        Here at Gym Rat Fitness we offer a variety of workout programs & nutrition plans to suit you goals. It's important 
+                        at any stage of your health and fitness journey, that you choose a program or plan that works for you.
+                    </p>
                 </div>
-            </div>
-            <div class="col s12 m12 l4 xl4">
-                <div class="card program-card-img medium hoverable">
-                    <div class="card-image">
-                        <img src="{{ MEDIA_URL }}hiit-program.jpg" class="responsive-img">
-                    </div>
-                    <div id="overlay">
-                        <div class="text" class="flow-text center-align">HIIT
-                            <br>
-                            <a href="#" class="btn-small learn-more black-text">Learn More</a>
-                        </div>
-                    </div>
+                <div class="col s12 m12 l12 xl6">
+                    <img src="{{ MEDIA_URL }}GRF-app.png" class="app-img" alt="Site Image">
+                    <img src="{{ MEDIA_URL }}GRF-app2.png" class="app-img" alt="Site Image">
                 </div>
             </div>
         </div>
@@ -67,133 +66,7 @@
             <div id="overlay">
                 <div class="text" class="flow-text center-align">Everything you need in one app
                     <br>
-                    <a href="#" class="btn-small shop-now"><b>Shop Nutrition Now</b></a>
-                </div>
-            </div>
-        </div>
-        <div class="section white center-align">
-            <div class="row container center-align">
-                <h2 class="header">Choosing the right program for <em>you</em></h2>
-                <p class="grey-text text-darken-3 lighten-3">
-                    Here at Gym Rat Fitness we offer a variety of programs to suit you goals. It's important 
-                    at any stage of your health and fitness journey, that you select a program that works for you.
-                    Checkout the headlines for each of our programs below.
-                </p>
-                <div class="row center-align">
-                    <div class="col s12 m12 l4 xl4">
-                        <div class="card hoverable program-cards">
-                            <div class="card-content black-text">
-                                <h5 class="card-title"><b>Strength</b></h5>
-                                <hr>
-                                <h6>8 Weeks</h6>
-                                <hr>
-                                <div>
-                                    <ul>
-                                        <h6><b>Training Styles:</b></h6>
-                                        <li>Weighted</li>
-                                        <li>Resistance</li>
-                                        <li>HIIT</li>
-                                        <li>LISS</li>
-                                        <li>Circut</li>
-                                    </ul>
-                                    <hr>
-                                </div>
-                                <div>
-                                    <ul>
-                                        <h6><b>Workout Durations:</b></h6>
-                                        <li>45-70 mins</li>
-                                    </ul>
-                                    <hr>
-                                </div>
-                                <div>
-                                    <ul>
-                                        <h6><b>Program Goals:</b></h6>
-                                        <li>Improve overall strength</li>
-                                        <li>Encourage lean muscle growth</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-action">
-                                <a href="#" class="btn-small learn-more black-text">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s12 m12 l4 xl4">
-                        <div class="card hoverable program-cards">
-                            <div class="card-content black-text">
-                                <h5 class="card-title"><b>Strength</b></h5>
-                                <hr>
-                                <h6>8 Weeks</h6>
-                                <hr>
-                                <div>
-                                    <ul>
-                                        <h6><b>Training Styles:</b></h6>
-                                        <li>Weighted</li>
-                                        <li>Resistance</li>
-                                        <li>HIIT</li>
-                                        <li>LISS</li>
-                                        <li>Circut</li>
-                                    </ul>
-                                    <hr>
-                                </div>
-                                <div>
-                                    <ul>
-                                        <h6><b>Workout Durations:</b></h6>
-                                        <li>45-70 mins</li>
-                                    </ul>
-                                    <hr>
-                                </div>
-                                <div>
-                                    <ul>
-                                        <h6><b>Program Goals:</b></h6>
-                                        <li>Improve overall strength</li>
-                                        <li>Encourage lean muscle growth</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-action">
-                                <a href="#" class="btn-small learn-more black-text">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s12 m12 l4 xl4">
-                        <div class="card hoverable program-cards">
-                            <div class="card-content black-text">
-                                <h5 class="card-title"><b>Strength</b></h5>
-                                <hr>
-                                <h6>8 Weeks</h6>
-                                <hr>
-                                <div>
-                                    <ul>
-                                        <h6><b>Training Styles:</b></h6>
-                                        <li>Weighted</li>
-                                        <li>Resistance</li>
-                                        <li>HIIT</li>
-                                        <li>LISS</li>
-                                        <li>Circut</li>
-                                    </ul>
-                                    <hr>
-                                </div>
-                                <div>
-                                    <ul>
-                                        <h6><b>Workout Durations:</b></h6>
-                                        <li>45-70 mins</li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div>
-                                    <ul>
-                                        <h6><b>Program Goals:</b></h6>
-                                        <li>Improve overall strength</li>
-                                        <li>Encourage lean muscle growth</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-action">
-                                <a href="#" class="btn-small learn-more black-text">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="{% url 'products' %}?category=nutrition_plans" class="btn-small shop-now"><b>Shop Nutrition Now</b></a>
                 </div>
             </div>
         </div>
@@ -221,9 +94,9 @@
                             <div>
                                 <ul>
                                     <h6><b>Program Price - Once-off payment:</b></h6>
-                                    <li>$79.99</li>
+                                    <li>€79.99</li>
                                     <h6><b>Nutrition Plan Price - Once-off payment:</b></h6>
-                                    <li>$49.99</li>
+                                    <li>€59.99</li>
                                 </ul>
                                 <hr>
                             </div>
@@ -241,18 +114,16 @@
                             <div>
                                 <p>Select the subscription access that you want for the program of your choice. 
                                     If you choose to pay for your program on a subscription basis, you can choose 
-                                    to have access to the program for either <b>6 months or one year</b>
+                                    to have access to the program for <b>6 months</b>.
                                 </p>
                                 <hr>
                             </div>
                             <div>
                                 <ul>
                                     <h6><b>Program Price - Subscription Access:</b></h6>
-                                    <li><b>6 Months:</b> $150.99</li>
-                                    <li><b>1 Year:</b> $199.99</li>
+                                    <li><b>6 Months:</b> €99.00</li>
                                     <h6><b>Nutrition Plan Price - Subscription Access:</b></h6>
-                                    <li><b>6 Months:</b> $89.99</li>
-                                    <li><b>1 Year:</b> $119.99</li>
+                                    <li><b>6 Months:</b> €79.99</li>
                                 </ul>
                                 <hr>
                             </div>
@@ -272,7 +143,7 @@
             <div id="overlay">
                 <div class="text" class="flow-text center-align">Short on equipment?
                     <br>
-                    <a href="#" class="btn-small shop-now black-text"><b>Shop Merch Now</b></a>
+                    <a href="{% url 'products' %}?category=merchandise" class="btn-small shop-now black-text"><b>Shop Merch Now</b></a>
                 </div>
             </div>
         </div>
