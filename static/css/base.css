@@ -140,16 +140,17 @@ a.update:hover {
     font-family: "Abril Fatface", sans-serif;
 }
 
+nav ul a {
+    background-color: #141414;
+}
+
 nav ul li a:hover {
     background-color: #F7F8F2;
     color: #141414;
 }
 
-nav ul li:hover {
+nav ul li i:hover {
     background-color: #F7F8F2;
-}
-
-i.fas.fa-shopping-bag:hover {
     color: #141414;
 }
 
@@ -224,6 +225,15 @@ h5 #delivery-banner {
 .body-colour {
     background-color: #F7F8F2;
 }
+
+.programs {
+    background-color: #fbf9f3;
+}
+
+.p-sect {
+    background-color: rgba(156, 224, 224, 0.5);
+    padding-bottom: 15px;
+}
 /*-------------------------- Overlay & text */
 #overlay {
     position: absolute;
@@ -251,7 +261,14 @@ h5 #delivery-banner {
 
 /*-------------------------- Cards */
 .program-cards {
-    background-color: #B8B8B8;
+    background-color: #fbf9f3;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    padding: 0px !important;
+}
+
+.card .program-card-content {
+    padding: 0px;
 }
 
 .card.medium .card-image {
@@ -306,6 +323,22 @@ ul.collaspible li {
 
 h6.grey-text.text-darken-3.lighten-3.left-align.product-count {
     padding-top: 25px;
+}
+
+.product-intro {
+    font-size: 25px;
+}
+
+.p-container {
+    margin-top: 25px !important;
+}
+
+.app-img {
+    height: 500px;
+}
+
+.buttons {
+    margin: 5px 0 5px 0;
 }
 
 /*-------------------------- Select box*/
@@ -371,6 +404,7 @@ input[name=image-clear]:not(.browser-default) {
 .bag-container {
     width: 90%;
 }
+
 .item-image {
     height: 50% !important;
     overflow: hidden;
@@ -705,9 +739,8 @@ footer ul li {
         align-content: center !important;
         text-align: center;
     }
-    /*-------------------------Admin Select box*/
-    
 
+    /*-------------------------Admin Select box*/
     textarea#id_description.textarea {
         border: none;
         border-bottom: 1px solid #b8b8b8;
@@ -753,6 +786,20 @@ footer ul li {
         border-bottom: 1px solid #b8b8b8;
     }
 
+}
+
+@media only screen and (min-width: 1024px) {
+    input[type=number]:not(.browser-default) {
+        width: 30%;
+    }
+
+    .item-image {
+        height: 50% !important;
+        overflow: hidden;
+        margin-top: 1rem;
+        width: 65%;
+        float: right;
+    }
 }
 
 @media (min-width: 1200px) {
