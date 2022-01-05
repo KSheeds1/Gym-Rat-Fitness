@@ -27,11 +27,45 @@
                 </li>
             </ul>
         </div>
-        <div class="col s12 m4 l4 offset l7 xl3">
+        <div class="col s12 m4 l4 offset l7 xl4">
             <ul class="collapsible">
                 <li>
                     <div class="collapsible-header"><h5 class="header"><b>Order</b><em>History:</em></h5></div>
-                    <div class="collapsible-body">{{ orders }}</div>
+                    <div class="collapsible-body">
+                        <table class="responsive-table">
+                            <thead>
+                              <tr>
+                                  <th>Order Number</th>
+                                  <th>Date</th>
+                                  <th>Items</th>
+                                  <th>Order Total</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                    <tr>
+                                        <td>
+                                            <a href="{% url 'order_history' order.order_number %}"
+                                                title="{{ order.order_number }}">
+                                                {{ order.order_number|truncatechars:6 }}
+                                            </a>
+                                        </td>
+                                        <td>{{ order.date }}</td>
+                                        <td>
+                                            <ul>
+                                                {% for item in order.lineitems.all %}
+                                                    <li class="small">
+                                                        { item.product.name } x{{ item.quantity }}
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </td>
+                                        <td>${{ order.grand_total }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </li>
             </ul>
         </div>
