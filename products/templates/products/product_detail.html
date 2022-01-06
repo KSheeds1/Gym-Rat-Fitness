@@ -77,6 +77,45 @@
                 </div>
             </div>
         </section>
+        <article class="reviews">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m12 center-align">
+                        <h3>Still not convinced?</h3>
+                        <h4>See what our Gym Rats have to say!</h4>
+                    </div>
+                    <div class="col s12 m6 offset-m3">
+                        <div class="carousel carousel-slider center">
+                            {% for review in reviews %}
+                                <div class="carousel-item center">
+                                    <div class="card horizontal hoverble">
+                                        <div class="card-stacked">
+                                            <div class="card-content">
+                                                <span class="card-title">{{ review.review_title }}</span>
+                                                <p>{{ review.review_content }}</p>
+                                                {% if review.rating %}
+                                                    <p class="green-txt">
+                                                        <i class="fas fa-star"></i> {{ review.rating }} / 5
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                            <div class="card-action">
+                                                <p>Reviewed By: {{ review.reviewer_name }} on the {{ review.review_date }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col s12 m12 center-align">
+                        <h5>Are you currently completing {{ product.name }} or have already finished?</h5>
+                        <h6>Leave a review of {{ product.name }} today</h6>
+                        <a href="{% url 'add_review' product.id %}" class="btn learn-more">Add Review</a>
+                    </div>
+                </div>
+            </div>
+        </article>
         <section id="join">
             <div class="container">
                 <div class="row">
@@ -90,7 +129,7 @@
                                 </a>
                             </p>
                         {% endif %}
-                        {% if product.rating %}
+                        {% if review.rating %}
                             <p class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i> {{ product.rating }} / 5</p>
                         {% else %}
                             <p class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i>No Rating</p>
@@ -296,6 +335,10 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('.modal').modal();
+        $('.carousel.carousel-slider').carousel({
+            fullWidth: false,
+            indicators: true
+        });
     });
 </script>
 {% endblock %}
