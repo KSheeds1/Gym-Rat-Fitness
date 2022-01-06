@@ -24,7 +24,7 @@ class Review(models.Model):
     review_title = models.CharField(max_length=254, null=True,
                                     blank=True)
     review_content = models.TextField()
-    rating = models.DecimalField(default=1.0, choices=RATING_CHOICES,
+    rating = models.DecimalField(choices=RATING_CHOICES,
                                  decimal_places=1, max_digits=3,
                                  blank=False)
     reviewer_name = models.ForeignKey(UserProfile,
