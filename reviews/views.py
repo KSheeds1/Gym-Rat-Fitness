@@ -80,3 +80,17 @@ def edit_review(request, review_id):
         'review': review,
     }
     return render(request, template, context)
+
+
+@login_required
+def delete_review(request, review_id):
+    """ Allows users to delete a specific review """
+    review = get_object_or_404(Review, pk=review_id)
+    if request.user.userprofile == review.reviewer_name:
+        review.delete()
+        messages.success(request, 'Your review has been deleted')
+        return redirect('home')
+    messages.error(request, 'Sorry, you can only delete your \
+                   own reviews')
+    return redirect('home')
+

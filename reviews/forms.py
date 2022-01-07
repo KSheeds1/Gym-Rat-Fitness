@@ -16,3 +16,10 @@ class ReviewForm(forms.ModelForm):
             'reviewer_name',
             'review_date',
         )
+
+    rating = forms.DecimalField(
+        label='Rating',
+        widget=forms.NumberInput(
+            attrs={'step': 0.5, 'min': 1.0, 'max': 5.0}
+        ),
+    )

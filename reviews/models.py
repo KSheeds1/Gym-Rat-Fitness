@@ -35,3 +35,7 @@ class Review(models.Model):
 
     def __str__(self):
         return self.review_title
+
+    def save(self, *args, **kwargs):
+        self.product.avg_rating()
+        super().save(*args, **kwargs)

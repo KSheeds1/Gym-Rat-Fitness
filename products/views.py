@@ -20,6 +20,7 @@ def get_products(request):
     A view to get all products including sorting & search queries
     """
     products = Product.objects.all()
+    reviews = Review.objects.all()
     query = None
     categories = None
     sort = None
@@ -59,6 +60,7 @@ def get_products(request):
 
     context = {
         'products': products,
+        'reviews': reviews,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,

@@ -77,7 +77,7 @@
                 </div>
             </div>
         </section>
-        {% if reviews > 0 %}
+        {% if reviews|length > 0 %}
             <article class="reviews">
                 <div class="container">
                     <div class="row">
@@ -102,13 +102,10 @@
                                                 </div>
                                                 <div class="card-action">
                                                     <p>Reviewed By: {{ review.reviewer_name }} on the {{ review.review_date }}</p>
-                                                    {% if request.user.userprofile == review.reviewer_name %}
-                                                        <a href="{% url 'edit_review' review.id %}" class="btn edit">Edit Review</a>
-                                                    {% endif %}
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> 
                                 {% endfor %}
                             </div>
                         </div>
@@ -134,10 +131,12 @@
                                 </a>
                             </p>
                         {% endif %}
-                        {% if review.rating %}
+                        {% if product.rating %}
                             <p class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i> {{ product.rating }} / 5</p>
                         {% else %}
-                            <p class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i>No Rating</p>
+                            <p class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i>No Rating - 
+                                <a href="{% url 'add_review' product.id %}" class="rate-link">Add a review</a>
+                            </p>
                         {% endif %}
                         <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                             {% csrf_token %}
@@ -200,7 +199,7 @@
                                 <div class="collapsible-body center-align">
                                     <a class="btn edit" href="{% url 'edit_product' product.id %}"><b>Edit Product</b></a>
                                     <a class="delete btn modal-trigger" data-target="#modal-delete{{product.id}}"
-                                            href="#modal-delete{{product.id}}">Delete
+                                        href="#modal-delete{{product.id}}">Delete
                                     </a>
                                     {% include 'products/includes/modal-delete.html'%}
                                 </div>
@@ -235,13 +234,13 @@
                             </a>
                         </p>
                     {% endif %}
-                    {% if review.rating %}
+                    {% if product.rating %}
                         <p class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i>{{ product.rating }} / 5 - 
                             <a href="#review">Check out the reviews!</a></p>
                     {% else %}
                         <p class="grey-text text-darken-3 lighten-3"><i class="fas fa-star"></i>No Rating - 
-                            <a href="{% url 'add_review' product.id %}" class="rate-link">Add a review</a></p></p>
-
+                            <a href="{% url 'add_review' product.id %}" class="rate-link">Add a review</a>
+                        </p>
                     {% endif %}
                     <p class="hide-on-small-only">{{ product.description }}</p>
                     <!--Collapsible for Admin CRUD OPs and Product description on mobile-->
@@ -322,6 +321,9 @@
                                                 <p>Reviewed By: {{ review.reviewer_name }} on the {{ review.review_date }}</p>
                                                 {% if request.user.userprofile == review.reviewer_name %}
                                                     <a href="{% url 'edit_review' review.id %}" class="btn edit">Edit Review</a>
+                                                    <a class="delete btn modal-trigger" data-target="#modal-delete{{review.id}}"
+                                                        href="#modal-delete{{review.id}}">Delete
+                                                    </a>
                                                 {% endif %}
                                             </div>
                                         </div>
