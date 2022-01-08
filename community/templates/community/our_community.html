@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'community/css/community.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="parallax-container">
+        <div class="parallax"><img src="{{ MEDIA_URL }}allauth-img.jpg" class="responsive-img"></div>
+        <div id="overlay">
+            <div class="text" class="flow-text center-align">Take the first step in your new journey
+                <br>
+                <a href="{% url 'products' %}?category=workout_programs" class="btn-small shop-now"><b>Shop Programs Now</b></a>
+            </div>
+        </div>
+    </div>
+    <section id="join">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h2 class="header center-align">Our Community</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="col s12">
+                    <p class="black-text intro center-align">
+                        Here at Gym Rat Fitness we know how important community is to your progress. Having 
+                        a community to engage with allows our Gym Rats to ask questions, post their wins, and 
+                        keep up to date with other users progress. Our community provides accountability and 
+                        friendship and will help aid you in your journey.                      
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <h4 class="center-align">Join the <em>Gym Rat community</em> today and change your life!</h4>
+                    <div class="divider"></div>
+                </div>
+                <div class="col s12 m6 offset-m3 l6 offset-l3">
+                    <div class="buttons center-align">
+                        <a class="btn register" href="{% url 'account_signup' %}">Register Today</a>
+                        <a class="btn login" href="{% url 'account_login' %}">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,23 @@
+.register {
+    background-color: #AED419;
+    color: #141414;
+}
+
+.register:hover {
+    background-color: #141414;
+    color: #AED419;
+}
+
+.login {
+    background-color: #141414;
+    color: #F7F8F2;
+}
+
+.login:hover {
+    background-color: #F7F8F2;
+    color: #141414;
+}
+
+.intro {
+    font-size: 20px;
+}
