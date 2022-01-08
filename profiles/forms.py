@@ -1,12 +1,14 @@
+""" Forms for user profile information and delivery information """
 from django import forms
+from .widgets import CustomClearableFileInput
 from .models import UserProfile
 
 
 class UserProfileForm(forms.ModelForm):
-    """ Checkout order form """
+    """ User delivery information """
     class Meta:
         model = UserProfile
-        exclude = ('user',)
+        exclude = ('user', 'about_me', 'image',)
 
     def __init__(self, *args, **kwargs):
         """
@@ -33,3 +35,14 @@ class UserProfileForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'profile-form-input'
             self.fields[field].label = False
+
+
+class EditProfileForm(forms.ModelForm):
+    """ Update basic profile information """
+    class Meta:
+        model = UserProfile
+        fields = ('about_me', 'image')
+
+    image = forms.ImageField(label='Profile Image',
+                             required=False,
+                             widget=CustomClearableFileInput)

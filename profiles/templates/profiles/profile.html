@@ -8,68 +8,133 @@
 {% block content %}
     <div class="row header-row">
         <div class="col s12 m6">
-            <h2 class="header category-header"><b>My</b><br><em>Profile</em></h2></h2>
+            <h2 class="header category-header"><b>My</b><br><em>Profile:</em></h2>
         </div>
     </div>
     <hr>
-    <div class="row">
-        <div class="col s12 m4 l4 offset l7 xl3">
-            <ul class="collapsible">
-                <li>
-                    <div class="collapsible-header"><h5 class="header"><b>Delivery</b><em>Info:</em></h5></div>
-                    <div class="collapsible-body">
-                        <form id="profile-update-form" action="{% url 'profile' %}" method="POST">
-                            {% csrf_token %}
-                            {{ form|crispy }}
-                            <button class="btn-small learn-more left-align">Update Information</button>
-                        </form>
+    <!--User information/past orders/reviews-->
+    <section>
+        <div class="row">
+            <div class="col s12 m6 l6">
+                <div class="card body-colour profile-card">
+                    <div class="row">
+                        {% if user.profile.image %}
+                            <img class="card-image col s3" src="{{ profile.image.url }}" alt="Profile Image">
+                        {% else %}
+                        <img class="card-image col s3" src="{{ MEDIA_URL }}default_userprofile_pic.png" alt="Default Profile Image">
+                        {% endif %}
+                        <div class="card-content  black-text col s9 white-text">
+                            <span class="card-title black-text">{{ user.username }}</span>
+                            {% if user.userprofile.about_me %}
+                                <p class="black-text"><em>{{ user.userprofile.about_me }}</em></p>
+                            {% else %}
+                            <p class="black-text"><em>Add some info about you!</em></p>
+                            {% endif %}
+                            <p class="black-text">Last logged in: {{ user.last_login }}</p>
+                            <a href="{% url 'edit_profile' %}" class="btn flow-text update-profo"><b>Update Info</b></a>
+                        </div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
+            <div class="col s12 m6 l6">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><h5 class="header"><b>Delivery</b> <em>Info:</em></h5></div>
+                        <div class="collapsible-body">
+                            <form id="profile-update-form" action="{% url 'profile' %}" method="POST">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <button class="btn-small learn-more left-align">Update Information</button>
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><h5 class="header"><b>Order</b> <em>History:</em></h5></div>
+                        <div class="collapsible-body">
+                            <table class="responsive-table">
+                                <thead>
+                                <tr>
+                                    <th>Order Number</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Order Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in orders %}
+                                        <tr>
+                                            <td>
+                                                <a href="{% url 'order_history' order.order_number %}"
+                                                    title="{{ order.order_number }}">
+                                                    {{ order.order_number|truncatechars:6 }}
+                                                </a>
+                                            </td>
+                                            <td>{{ order.date }}</td>
+                                            <td>
+                                                <ul>
+                                                    {% for item in order.lineitems.all %}
+                                                        <li class="small">
+                                                            { item.product.name } x{{ item.quantity }}
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </td>
+                                            <td>${{ order.grand_total }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><h5 class="header"><b>My</b> <em>Reviews:</em></h5></div>
+                        {% if review < 0 %}
+                            {% for review in reviews %}
+                                <div class="collapsible-body">
+                                    <div class="card small hoverble">
+                                        <div class="card-stacked">
+                                            <div class="card-content">
+                                                <span class="card-title">{{ review.review_title }}</span>
+                                                <p>{{ review.review_content }}</p>
+                                                {% if review.rating %}
+                                                    <p class="green-txt">
+                                                        <i class="fas fa-star"></i> {{ review.rating }} / 5
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                            <div class="card-action right">
+                                                <p>Reviewed By: {{ review.reviewer_name }} on the {{ review.review_date }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                        <div class="collapsible-body"><p>You haven't posted any reviews yet!</p></div>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col s12 m4 l4 offset l7 xl4">
-            <ul class="collapsible">
-                <li>
-                    <div class="collapsible-header"><h5 class="header"><b>Order</b><em>History:</em></h5></div>
-                    <div class="collapsible-body">
-                        <table class="responsive-table">
-                            <thead>
-                              <tr>
-                                  <th>Order Number</th>
-                                  <th>Date</th>
-                                  <th>Items</th>
-                                  <th>Order Total</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                {% for order in orders %}
-                                    <tr>
-                                        <td>
-                                            <a href="{% url 'order_history' order.order_number %}"
-                                                title="{{ order.order_number }}">
-                                                {{ order.order_number|truncatechars:6 }}
-                                            </a>
-                                        </td>
-                                        <td>{{ order.date }}</td>
-                                        <td>
-                                            <ul>
-                                                {% for item in order.lineitems.all %}
-                                                    <li class="small">
-                                                        { item.product.name } x{{ item.quantity }}
-                                                    </li>
-                                                {% endfor %}
-                                            </ul>
-                                        </td>
-                                        <td>${{ order.grand_total }}</td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+    </section>
+    <section class="grey-bg">
+        <div class="row">
+            <div class="col s12 m8 offset-m2 l6 offset-l3">
+                <h3 class="header">My Feed</h3>
+                <div class="divider"></div>
+                <div class="card horizontal">
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <textarea id="textarea1" class="materialize-textarea" placeholder="Add a Post!"></textarea>
+                        </div>
+                        <div class="card-action">
+                            <a href="#" class="btn right flow-text update-profo">Post</a>
+                        </div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 {% endblock %}
 
 {% block extra_js %}

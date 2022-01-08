@@ -26,6 +26,9 @@ class UserProfile(models.Model):
                                         null=True, blank=True)
     default_country = CountryField(blank_label='Country',
                                    null=True, blank=True)
+    about_me = models.TextField()
+    image = models.ImageField(upload_to='profile_image', null=True,
+                              blank=True)
 
     def __str__(self):
         return self.user.username

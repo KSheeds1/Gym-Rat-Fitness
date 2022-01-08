@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="row header-row">
+        <div class="col s12 m6">
+            <h2 class="header category-header"><b>Edit</b><br><em>Profile</em></h2>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6 l6 xl8">
+                <h5><b>Update your profile</b></h5>
+                <p>Please fill out the form to update your profile</p>
+                <div class="divider"></div>
+                <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {% if field.name != 'image' %}
+                            {{ field | as_crispy_field }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    {% endfor %}
+                    <div class="submit-button right">
+                        <a href="{% url 'home' %}" class="btn cancel">
+                            <span>Cancel</span>
+                        </a>
+                        <button id="submit-button" class="btn learn-more">
+                            <span>Update Profile</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
