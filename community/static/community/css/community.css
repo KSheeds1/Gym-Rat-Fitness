@@ -21,3 +21,52 @@
 .intro {
     font-size: 20px;
 }
+
+/*-----------------------------Post cards */
+.profile-image {
+    width: 30px;
+    height: 30px;
+}
+
+.card .card-content .card-title {
+    margin-bottom: 1px;
+}
+
+.divider {
+    color: #B8B8B8;
+    margin-top: 1px;
+}
+
+.collapsible .post-collapse {
+    color: #fff;
+}
+/*--------------------------------Buttons*/
+.post {
+    background-color: #AED419;
+    color: #141414;
+}
+
+.post:hover {
+    background-color: #141414;
+    color: #AED419;
+}
+
+.like {
+    background-color: #141414;
+    color: #04D9D9;
+}
+
+.like:hover {
+    background-color: #04D9D9;
+    color: #141414;
+}
+
+.comment {
+    background-color: #B8B8B8;
+    color: #141414;
+}
+
+.comment:hover {
+    background-color: #141414;
+    color: #F7F8F2;
+}

@@ -6,7 +6,7 @@ class NewPostForm(forms.ModelForm):
     """ Fields required for a user to post """
     class Meta:
         model = Post
-        fields = ['description', 'photo']
+        fields = ['description', 'image']
 
 
 class NewCommentForm(forms.ModelForm):
