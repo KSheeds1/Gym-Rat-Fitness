@@ -1,0 +1,14 @@
+<div id="modal1" class="modal">
+    <form action="{% url 'add_post' %}" method="POST" enctype="multipart/form-data">
+        <div class="modal-header center-align white-text">
+            <h4>Add a Post</h4>
+        </div>
+        <div class="modal-content">
+            {% csrf_token %}
+            {{ form }}
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn right flow-text post">Post</button>
+        </div>
+    </form>
+</div>

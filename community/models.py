@@ -9,10 +9,10 @@ class Post(models.Model):
     class Meta:
         ordering = ['-posted_on']
 
-    user_name = models.ForeignKey(User, on_delete=models.CASCADE)
     user_profile = models.ForeignKey(UserProfile,
                                      on_delete=models.CASCADE,
-                                     related_name='posts')
+                                     related_name='posts',
+                                     null=True, blank=True)
     description = models.CharField(max_length=255, blank=True)
     image = models.ImageField(default='', null=True,
                               blank=True)
