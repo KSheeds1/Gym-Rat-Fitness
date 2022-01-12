@@ -4,7 +4,6 @@ from django.shortcuts import (
 )
 from django.contrib import messages
 from django.core.paginator import Paginator
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from profiles.models import UserProfile
@@ -55,7 +54,7 @@ def add_post(request):
     else:
         form = NewPostForm()
 
-    template = 'community/includes/add_post.html'
+    template = 'community/my_community.html'
     context = {
         'form': form,
     }
@@ -74,3 +73,53 @@ def post_detail(request, post_id):
     }
 
     return render(request, 'community/post_detail.html', context)
+
+
+@login_required
+def edit_post(request, post_id):
+    """ View for user to edit their posts """
+
+    post = get_object_or_404(Post, pk=post_id)
+    user = get_object_or_404(UserProfile, user=request.user)
+
+    if not user == post.user_profile:
+        messages.error(request, 'Sorry only the post owner can \
+                       edit their posts')
+        return redirect(reverse('my_community'))
+
+    if request.method == 'POST':
+        form = NewPostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Post edited successfully')
+            return redirect(reverse('post_detail', args=[post.id]))
+        else:
+            messages.error(request, 'Failed to edit your post. \
+                           Please ensure the form is valid.')
+    else:
+        form = NewPostForm(instance=post)
+        messages.info(request, 'You are editing on of your older \
+                      posts.')
+
+    template = 'community/edit_post.html'
+    context = {
+        'form': form,
+        'post': post,
+    }
+    return render(request, template, context)
+
+
+@login_required
+def delete_post(request, post_id):
+    """ View for user to delete their own posts """
+
+    post = get_object_or_404(Post, pk=post_id)
+    user = get_object_or_404(UserProfile, user=request.user)
+
+    if not user == post.user_profile:
+        messages.error(request, 'Sorry only the post owner can \
+                       delete their posts')
+
+    post.delete()
+    messages.success(request, 'Post deleted')
+    return redirect(reverse('my_community'))

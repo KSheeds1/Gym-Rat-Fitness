@@ -8,4 +8,6 @@ urlpatterns = [
     path('my_community/', PostListView.as_view(), name='my_community'),
     path('add_post/', views.add_post, name='add_post'),
     path('<int:post_id>/', views.post_detail, name='post_detail'),
+    path('edit_post/<int:post_id>/', views.edit_post, name='edit_post'),
+    path('delete_post/<int:post_id>/', views.delete_post, name='delete_post'),
 ]

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'community/css/community.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3 class="header"><b>Edit </b><em>Post</em></h3>
+    <div class="divider"></div>
+    <div class="row">
+        <div class="col s12 m12">
+            <form action="{% url 'edit_post' post.id %}" method="POST" enctype="multipart/form-data">
+                <div class="col s12">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {% if field.name != 'image' %}
+                            {{ field | as_crispy_field }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    {% endfor %}
+                    <div class="right">
+                        <a href="{% url 'my_community' %}" class="btn cancel">Cancel</a>
+                        <button type="submit" class="btn flow-text post">Post</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
