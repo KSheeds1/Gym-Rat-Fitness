@@ -20,3 +20,5 @@ class NewCommentForm(forms.ModelForm):
     class Meta:
         model = Comments
         fields = ['comment', ]
+
+    comment = forms.CharField(label='Add comment')

@@ -18,7 +18,9 @@
 <!--Community Dropdown-->
 <ul id="dropdown4" class="dropdown-content nav-dark">
     <li><a href="{% url 'our_community' %}">Our Community</a></li>
-    <li><a href="#!">My Community</a></li>
+    {% if request.user.is_authenticated %}
+        <li><a href="{% url 'my_community' %}">My Community</a></li>
+    {% endif %}
 </ul>
 <!--My Account Dropdown-->
 <ul id="dropdown5" class="dropdown-content nav-dark">

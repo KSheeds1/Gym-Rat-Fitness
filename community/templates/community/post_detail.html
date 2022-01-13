@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+    <!--Post detail-->
     <div class="row">
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <div class="card horizontal">
@@ -19,7 +20,7 @@
                                 <img class="profile-image" src="{{ MEDIA_URL }}default_userprofile_pic.png"
                                     alt="Default Profile Image">
                             {% endif %}
-                            <a href="">{{ post.user_name }}</a>
+                            <a href="">{{ post.user_profile }}</a>
                         </p>
                         <div class="divider"></div>
                         <br>
@@ -35,10 +36,9 @@
                         <div class="buttons right">
                             <a href="{% url 'my_community' %}" class="btn my-community"><i class="fas fa-chevron-left"></i>My Community</a>
                             <a href="#" class="btn like">Like</a>
-                            <a href="#" class="btn comment">Comment</a>
-                            {% if request.user == post.user_name %}
-                                <a href="#" class="btn edit">Edit</a>
-                                <a href="#" class="btn delete">Delete</a>
+                            {% if request.user == post.user_profile %}
+                                <a href="{% url 'edit_post' post.id %}" class="btn edit">Edit</a>
+                                <a href="{% url 'delete_post' post.id %}" class="btn delete">Delete</a>
                             {% endif %}
                         </div>
                         <p>{{ post.posted_on }}</p>
@@ -46,5 +46,49 @@
                 </div>
             </div>
         </div>
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <h5 class="header">Comments</h5>
+            <!--Add Comment form-->
+            <form method="POST">
+                <div class="card horizontal col s12">
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button type="submit" class="btn right flow-text post">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--Comments-->
+        {% if post.comments.all %}
+            {% for comment in post.comments.all %}
+                <div class="card horizontal col s12">
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <p class="card-title grey-text text-darken-4">
+                                {% if comment.user.profile.image %}
+                                    <img class="profile-image" src="{{ post.user_profile.userprofile.image.url }}" 
+                                        alt="Profile Image">
+                                {% else %}
+                                    <img class="profile-image" src="{{ MEDIA_URL }}default_userprofile_pic.png"
+                                        alt="Default Profile Image">
+                                {% endif %}
+                                <a href="">{{ comment.user_profile }}</a>
+                            </p>
+                            <div class="divider"></div>
+                            <br>
+                            <p class="post-content">{{ comment.comment }}</p>
+                        </div>
+                        <div class="card-action">
+                            <p>Posted on: {{ comment.comment_date }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>There are no comments added yet</p>
+        {% endif %}
     </div>
 {% endblock %}
