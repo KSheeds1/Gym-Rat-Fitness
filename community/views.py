@@ -8,7 +8,7 @@ from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from profiles.models import UserProfile
 from .forms import NewPostForm, NewCommentForm
-from .models import Post, Comments, Like
+from .models import Post
 
 
 def our_community(request):

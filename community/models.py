@@ -41,13 +41,3 @@ class Comments(models.Model):
 
     def __str__(self):
         return self.comment
-
-
-class Like(models.Model):
-    """ Fields necessary to like a post """
-    user_profile = models.ForeignKey(UserProfile,
-                                     on_delete=models.CASCADE,
-                                     related_name='likes',
-                                     null=True, blank=True)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE,
-                             related_name='likes')
