@@ -22,7 +22,7 @@
                             <h5>Grand Total: €{{ grand_total|floatformat:2 }}</h5>
                             {% if free_delivery_delta > 0 %}
                                 <p> You could get free delivery by spending just 
-                                    <strong>{{ free_delivery_delta }}</strong> more!
+                                    <strong>€{{ free_delivery_delta }}</strong> more!
                                 </p>
                             {% endif %}
                         </div>
@@ -78,15 +78,7 @@
                         <p>{{ item.product.sku|upper }}</p>
                         <form class="form update-form" action="{% url 'adjust_bag' item.item_id %}" method="POST">
                             {% csrf_token %}
-                            <p>{{ item.product.price }}</p>
-                            <!--Adjust price selection-->
-                            <p>
-                                <label for="selected_price">
-                                    <input type="radio" name="selected_price" id="selected_price" data-item_id="{{ item.product.id }}"
-                                        value="{{ item.product.price }}" class="filled-in selected_check id_select_{{ item.product.id }}" />
-                                    <span><b>Standard: €{{ item.product.price }}</b> for {{ item.product.length_of_time }} access</span>
-                                </label>
-                            </p>
+                            <p>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                             <!--Adjust quantity selection-->
                             <h6><b>Update Quantity:</b></h6>
                             <div class="row quantity-row">
