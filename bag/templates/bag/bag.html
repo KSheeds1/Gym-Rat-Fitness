@@ -41,13 +41,14 @@
                         {% if item.product.image %}
                             <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="responsive-img">
                         {% else %}
-                            <img src="{{ MEDIA_URL }}noimg.png" alt="{{ item.product.name }}" class="responsive-img item-image">
+                            <img src="{{ MEDIA_URL }}noimg.png" alt="{{ item.product.name }}" class="responsive-img">
                         {% endif %}
                     </div>
                     <div class="col s12 hide-on-med-and-up">
                         <h5>{{ item.product.name }}</h5>
                         <p>{{ item.product.sku|upper }}</p>
                         <p> €{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                        <h6><b>Update Quantity:</b></h6>
                         <form class="form update-form" action="{% url 'adjust_bag' item.item_id %}" method="POST">
                             {% csrf_token %}
                             <div class="row quantity-row">
@@ -69,15 +70,25 @@
                             </div>
                         </form>
                         <a class="update btn">Update Quantity</a>
-                        <a class="btn delete remove-item remove_{{ item.item_id }}"><i class="far fa-trash-alt"></i> Remove</a>
+                        <a class="btn delete remove-item remove_{{ item.item_id }}">Remove</a>
                         <div class="divider"></div>
                     </div>
                     <div class="col m7 push-m5 l7 push-l5 xl6 push-xl6 hide-on-small-only">
                         <h5>{{ item.product.name }}</h5>
                         <p>{{ item.product.sku|upper }}</p>
-                        <p>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                         <form class="form update-form" action="{% url 'adjust_bag' item.item_id %}" method="POST">
                             {% csrf_token %}
+                            <p>{{ item.product.price }}</p>
+                            <!--Adjust price selection-->
+                            <p>
+                                <label for="selected_price">
+                                    <input type="radio" name="selected_price" id="selected_price" data-item_id="{{ item.product.id }}"
+                                        value="{{ item.product.price }}" class="filled-in selected_check id_select_{{ item.product.id }}" />
+                                    <span><b>Standard: €{{ item.product.price }}</b> for {{ item.product.length_of_time }} access</span>
+                                </label>
+                            </p>
+                            <!--Adjust quantity selection-->
+                            <h6><b>Update Quantity:</b></h6>
                             <div class="row quantity-row">
                                 <div class="col quantity-col">
                                     <div class="input-field input-field-{{ item.item_id }} inline">
@@ -96,8 +107,8 @@
                                 </div>
                             </div>
                         </form>
-                        <a class="update btn">Update Quantity</a>
-                        <a class="btn delete remove-item remove_{{ item.item_id }}"><i class="far fa-trash-alt"></i> Remove</a>
+                        <a class="update btn-small btn">Update Quantity</a>
+                        <a class="btn btn-small delete remove-item remove_{{ item.item_id }}">Remove</a>
                     </div>
                     <div class="col m5 pull-m7 l5 pull-l7 xl6 pull-xl6 hide-on-small-only">
                         {% if item.product.image %}
@@ -113,7 +124,7 @@
             </div>
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                    <h4 class="header category-header"><b>Bag</b><br><em>Summary:</em></h4>
+                    <h4 class="header category-header"><b>Bag</b><br><em>Summary: <small>{{ bag_items|length }} items</small></em></h4>
                     <div class="divider"></div>
                     <div class="right">
                         <h6>Bag Total: €{{ total|floatformat:2 }}</h6>

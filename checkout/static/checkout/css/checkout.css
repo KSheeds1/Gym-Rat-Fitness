@@ -1,5 +1,63 @@
-/*-----------------------Order Form*/
-fieldset{
+/*-----------------------Stripe & Order Form*/
+.StripeElement,
+.stripe-style-input {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  background-color: #F7F8F2;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #F7F8F2 !important;
+}
+
+.stripe-style-input::placeholder {
+    color: #aab7c4;
+}
+
+#payment-form .form-control,
+#card-element {
+    color: #000;
+    border: 1px solid #b8b8b8;
+}
+
+#card-errors {
+    color: #8a1621;
+}
+/*------------------- Select dropdown */
+.select-wrapper .caret {
+    fill: #141414;
+}
+
+.select-wrapper input.select-dropdown {
+    color: #3a3939;
+}
+
+.dropdown-content li>span {
+    background-color: #F7F8F2;
+    color: #141414;
+}
+
+.dropdown-content li>span:hover {
+    background-color: #97A1D8;
+}
+.select-dropdown.dropdown-content li.selected {
+    background-color: #141414;
+}
+/*------------------- */
+
+fieldset {
     border-style: solid;
     border-color: #b8b8b8;
     border-width: 1px;
@@ -46,4 +104,17 @@ fieldset{
 
 .free-del {
     background-color: #97A1D8;
+}
+
+/*-------------------------------------Media Queries */
+@media only screen and (max-width: 360px) {
+    .submit-button {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        align-self: center !important;
+    }
+
+    .complete-order {
+        margin-top: 5px;
+    }
 }

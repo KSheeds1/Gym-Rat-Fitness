@@ -69,6 +69,16 @@ hr {
     color: #141414;
 }
 
+.btn-floating i {
+    background-color: #141414;
+    color: #F7F8F2;
+}
+
+.btn-floating i:hover {
+    background-color: #F7F8F2;
+    color: #141414;
+}
+
 .delete {
     background-color: #960535;
 }

@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -207,9 +206,9 @@ if 'USE_AWS' in os.environ:
 # Stripe
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
-STRIPE_TEST_PUBLIC_KEY = 'pk_test_51KCZhDE1f916O9nA0XYbjRYc0N5LjEekOufF2fiQIsiVZykuYrvXZh37KWmR7BFILz31AvbnDU9n3YjFo4twurHS00iWcPnlU6'
-STRIPE_TEST_SECRET_KEY = 'sk_test_51KCZhDE1f916O9nAQ67EdY4FWELfyHMyNGrYhu8SsgDYSDRfTcrl5vYJ0S4tnW4Nh0Elri3BkeHalQXTAI96Udt500HTgJXwH0'
-STRIPE_LIVE_MODE = False  # Change to TRUE in PRODUCTION
+STRIPE_CURRENCY = 'eur'
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 
 
 # Default primary key field type

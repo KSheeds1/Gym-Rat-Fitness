@@ -45,7 +45,7 @@
                                     class="fas fa-caret-down fa-sm"></i></a></li>
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdown5">My Account <i
                                     class="fas fa-caret-down fa-sm"></i></a></li>
-                        <li><a class="#" href="{% url 'view_bag' %}"><i class="fas fa-shopping-bag left"></i></a></li>
+                        <li><a class="btn-floating btn-small add-to-bag" href="{% url 'view_bag' %}"><i class="fas fa-shopping-bag left"></i></a></li>
                     </ul>
                     {% include 'includes/nav-dropdowns.html' %}
                 </div>
@@ -68,6 +68,12 @@
                 </div>
             </div>
         </header>
+        <!--Floating action button for search functionality mobile/tablet-->
+        <div class="fixed-action-btn show-on-medium-and-down hide-on-large-only">
+            <a class="btn-floating btn-large search">
+                <i class="fas fa-search"></i>
+            </a>
+        </div>
 
         {% if messages %}
             <div class="message-container">
@@ -126,6 +132,8 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
             <!--Materialize Components Initialization-->
             <script src="{% static 'js/materialize.js' %}"></script>
+            <!--Stripe-->
+            <script src="https://js.stripe.com/v3/"></script>
         {% endblock %}
 
         {% block extra_js %}
@@ -134,7 +142,7 @@
                 const toasts = document.querySelectorAll('.custom-toast');
                 [...toasts].forEach(toast => {toast.style.display = 'none'})
             }
-            , 90000);
+            , 30000);
             
         </script>
         {% endblock %}
