@@ -142,15 +142,9 @@
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col s12 m6">
-                                    <h4>Select your access</h4>
+                                    <h4>Pricing</h4>
                                     <hr>
-                                    <p>
-                                        <label for="selected_price">
-                                            <input type="radio" name="selected_price" id="selected_price" data-item_id="{{ product.id }}"
-                                                value="{{ product.price }}" class="filled-in selected_check id_select_{{ product.id }}" />
-                                            <span><b>Standard: €{{ product.price }}</b> for {{ product.length_of_time }} access</span>
-                                        </label>
-                                    </p>
+                                    <p>€{{ product.price }} for {{ product.length_of_time }} access</p>
                                 </div>
                                 <div class="col s12 m6">
                                     <h4>Select Quantity:</h4>
