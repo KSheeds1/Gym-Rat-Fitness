@@ -10,8 +10,6 @@ from products.models import Product
 from profiles.models import UserProfile
 
 
-
-
 class Order(models.Model):
     """ Handle all orders across the store """
     order_number = models.CharField(max_length=32, null=False,
