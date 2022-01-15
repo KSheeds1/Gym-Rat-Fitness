@@ -144,22 +144,13 @@
                                 <div class="col s12 m6">
                                     <h4>Select your access</h4>
                                     <hr>
-                                    {% if product.sub_price %}
-                                        <p class="inline">
-                                            <label for="selected_price">
+                                    <p>
+                                        <label for="selected_price">
                                             <input type="radio" name="selected_price" id="selected_price" data-item_id="{{ product.id }}"
-                                                value="{{ product.sub_price }}" class="filled-in selected_check id_select_{{ product.id }}" />
-                                            <span><b>Subscription: €{{ product.sub_price }}</b> for 6 months access</span>
-                                            </label>
-                                        </p>
-                                        <p>
-                                            <label for="selected_price">
-                                                <input type="radio" name="selected_price" id="selected_price" data-item_id="{{ product.id }}"
-                                                    value="{{ product.price }}" class="filled-in selected_check id_select_{{ product.id }}" />
-                                                <span><b>Standard: €{{ product.price }}</b> for {{ product.length_of_time }} access</span>
-                                            </label>
-                                        </p>
-                                    {% endif %}
+                                                value="{{ product.price }}" class="filled-in selected_check id_select_{{ product.id }}" />
+                                            <span><b>Standard: €{{ product.price }}</b> for {{ product.length_of_time }} access</span>
+                                        </label>
+                                    </p>
                                 </div>
                                 <div class="col s12 m6">
                                     <h4>Select Quantity:</h4>
