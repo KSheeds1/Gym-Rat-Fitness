@@ -19,8 +19,6 @@ def add_to_bag(request, item_id):
     """
 
     product = get_object_or_404(Product, pk=item_id)
-    if 'selected_price' in request.POST:
-        price = request.POST['selected_price']
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
@@ -28,11 +26,11 @@ def add_to_bag(request, item_id):
     if item_id in list(bag.keys()):
         bag[item_id] += quantity
         messages.success(request, (f'Updated {product.name} '
-                                f'quantity to {bag[item_id]}'))
+                                   f'quantity to {bag[item_id]}'))
     else:
         bag[item_id] = quantity
         messages.success(request, (f'Added {product.name} to your '
-                                f'bag'))
+                                   f'bag'))
 
     request.session['bag'] = bag
     return redirect(redirect_url)
@@ -45,8 +43,6 @@ def adjust_bag(request, item_id):
     """
 
     product = get_object_or_404(Product, pk=item_id)
-    if 'selected_price' in request.POST:
-        price = request.POST['selected_price']
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})

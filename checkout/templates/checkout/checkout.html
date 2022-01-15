@@ -38,7 +38,7 @@
                         <p class="text-muted">Qty: {{ item.quantity }}</p>
                     </div>
                     <div class="col s3 right-align">
-                        <p class="text-muted">${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                        <p class="text-muted">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                     </div>
                 </div>
             {% endfor %}
