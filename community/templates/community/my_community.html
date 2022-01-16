@@ -6,6 +6,25 @@
 {% endblock %}
 
 {% block content %}
+    <div class="row">
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <h3 class="center-align">Keep up to date with your fellow Gym Rats</h3>
+            <div class="divider"></div>
+            <!--Community list-->
+            <div class="center-align users">
+                {% for user in users %}
+                    <div class="chip center-align">
+                        {% if user.profile.image %}
+                            <img src="{{ userprofile.image.url }}" alt="Profile Image">
+                        {% else %}
+                            <img src="{{ MEDIA_URL }}default_userprofile_pic.png" alt="Profile Image">
+                        {% endif %}
+                        {{ user }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     <!--Add post card-->
     <div class="row">
         <div class="col s12 m8 offset-m2 l6 offset-l3">

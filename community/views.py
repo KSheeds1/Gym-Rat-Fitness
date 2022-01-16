@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from profiles.models import UserProfile
 from .forms import NewPostForm, NewCommentForm
 from .models import Post
@@ -30,7 +31,10 @@ class PostListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
         form = self.form_class(self.request.POST or None)
+        # users = User.objects.all()
+        users = UserProfile.objects.all()
         context['form'] = form
+        context['users'] = users
         return context
 
 

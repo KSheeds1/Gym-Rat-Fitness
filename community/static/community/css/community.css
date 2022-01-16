@@ -1,3 +1,4 @@
+/*------------------------------Our community pg */
 .register {
     background-color: #AED419;
     color: #141414;
@@ -23,6 +24,10 @@
 }
 
 /*-----------------------------Post cards */
+.users {
+    margin: 10px 0 10px 0;
+}
+
 .profile-image {
     width: 30px;
     height: 30px;
@@ -73,13 +78,14 @@ p.post-content a {
 }
 
 .my-community {
-    background-color: #F7F8F2;
-    color: #141414;
+    margin: 10px 0 10px 0;
+    background-color: #141414;
+    color: #F7F8F2;
 }
 
 .my-community:hover {
-    background-color: #141414;
-    color: #F7F8F2;
+    background-color: #F7F8F2;
+    color: #141414;
 }
 
 /*------------------------------Add post form*/
