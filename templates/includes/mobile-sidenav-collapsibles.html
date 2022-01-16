@@ -10,9 +10,6 @@
                 <div class="collapsible-body">
                     <ul class="nav-dark">
                         <li><a href="{% url 'products' %}?category=workout_programs"><span class="white-text">All Programs</span></a></li>
-                        <li><a href="#!"><span class="white-text">Strong</span></a></li>
-                        <li><a href="#!"><span class="white-text">Mobility</span></a></li>
-                        <li><a href="#!"><span class="white-text">HIIT</span></a></li>
                     </ul>
                 </div>
             </li>
@@ -26,8 +23,6 @@
                 <div class="collapsible-body">
                     <ul class="nav-dark">
                         <li><a href="{% url 'products' %}?category=nutrition_plans"><span class="white-text">Nutrition 101</span></a></li>
-                        <li><a href="#!"><span class="white-text">Nutrition Plan - Standard</span></a></li>
-                        <li><a href="#!"><span class="white-text">Nutrition Plan - Vegan</span></a></li>
                     </ul>
                 </div>
             </li>
@@ -91,9 +86,9 @@
                 <a href="{% url 'view_bag' %}" class="{% if grand_total %}white-text{% else %}white-text{% endif %} collapsible-header">
                     <i class="fas fa-shopping-bag 3x white-text"></i>
                     {% if grand_total %}
-                        ${{ grand_total|floatformat:2 }}
+                        €{{ grand_total|floatformat:2 }}
                     {% else %}
-                        $0.00
+                        €0.00
                     {% endif %}
                 </a>
                 <div class="collapsible-body">

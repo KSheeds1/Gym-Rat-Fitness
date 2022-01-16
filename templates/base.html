@@ -35,17 +35,25 @@
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a class="btn-floating btn-small search" id="search"><i class="fas fa-search"></i></a></li>
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Programs <i
-                                    class="fas fa-caret-down fa-sm"></i></a></li>
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Nutrition <i
-                                    class="fas fa-caret-down fa-sm"></i></a></li>
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown3">Merchandise <i
-                                    class="fas fa-caret-down fa-sm"></i></a></li>
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown4">Community <i
-                                    class="fas fa-caret-down fa-sm"></i></a></li>
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown5">My Account <i
-                                    class="fas fa-caret-down fa-sm"></i></a></li>
-                        <li><a class="btn-floating btn-small add-to-bag" href="{% url 'view_bag' %}"><i class="fas fa-shopping-bag left"></i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Programs 
+                            <i class="fas fa-caret-down fa-sm"></i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Nutrition 
+                            <i class="fas fa-caret-down fa-sm"></i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown3">Merchandise 
+                            <i class="fas fa-caret-down fa-sm"></i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown4">Community 
+                            <i class="fas fa-caret-down fa-sm"></i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown5">My Account 
+                            <i class="fas fa-caret-down fa-sm"></i></a></li>
+                        <li><a class="add-to-bag" href="{% url 'view_bag' %}">
+                                <i class="fas fa-shopping-bag fa-sm"></i>
+                                {% if grand_total %}
+                                    €{{ grand_total|floatformat:2 }}
+                                {% else %}
+                                    €0.00
+                                {% endif %}
+                            </a>
+                        </li>
                     </ul>
                     {% include 'includes/nav-dropdowns.html' %}
                 </div>

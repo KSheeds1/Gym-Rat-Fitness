@@ -172,6 +172,7 @@ nav ul li i:hover {
 input.add-to-bag {
     font-family: "Raleway", sans-serif;
 }
+
 /*-------------------------- Nav Dropdowns */
 .dropdown-content li a {
     background-color: #141414;
@@ -202,6 +203,10 @@ input.add-to-bag {
 .collapsible-header 
 i.fas.fa-shopping-bag {
     font-size: x-large;
+}
+
+.sidenav li a i {
+    margin: 0 5px 0 0;
 }
 
 /*-------------------------- Delivery Banner */
