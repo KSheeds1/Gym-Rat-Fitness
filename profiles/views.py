@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from reviews.models import Review
 from checkout.models import Order
+from community.models import Post
 from .models import UserProfile
 from .forms import UserProfileForm
 from .forms import EditProfileForm
@@ -30,13 +31,15 @@ def profile(request):
     else:
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
-    reviews = profile.reviews.all()
+    reviews = Review.objects.filter(reviewer_name=profile)
+    posts = Post.objects.filter(user_profile=profile)
 
     template = 'profiles/profile.html'
     context = {
         'form': form,
         'orders': orders,
         'reviews': reviews,
+        'posts': posts,
         'on_profile_page': True,
     }
 
@@ -77,7 +80,7 @@ def edit_profile(request):
         else:
             messages.error(request,
                            ('Update failed. Please ensure '
-                           'the form is valid.'))
+                            'the form is valid.'))
     else:
         form = EditProfileForm(instance=profile)
 

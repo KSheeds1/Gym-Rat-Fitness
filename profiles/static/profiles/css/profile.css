@@ -37,6 +37,11 @@
     padding: 0px !important;
 }
 
+.profile-image {
+    width: 30px;
+    height: 30px;
+}
+
 .grey-bg {
     background-color: #B8B8B8;
     padding-bottom: 5px;
@@ -61,6 +66,25 @@
     color: #AED914;
 }
 
+p.post-content, a {
+    color: #141414;
+}
+
+.review {
+    background-color: #F7F8F2;
+}
+
+.community {
+    background-color: #141414;
+    color: #F7F8F2;
+    margin-top: 5px;
+}
+
+.community:hover {
+    background-color: #F7F8F2;
+    color: #141414;
+}
+
 /*---------------------- Edit profile form  */
 textarea#id_about_me.textarea {
     height: auto;
@@ -75,4 +99,12 @@ textarea#id_about_me.textarea {
     background-color: #dc3545;
     border-color: #dc3545;
     border-radius: 0;
+}
+
+/*----------------------------Media Query */
+@media only screen and (max-width: 320px) {
+    .community {
+        float: left !important;
+        margin-top: 10px;
+    }
 }

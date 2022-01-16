@@ -74,7 +74,7 @@
                                                 <ul>
                                                     {% for item in order.lineitems.all %}
                                                         <li class="small">
-                                                            { item.product.name } x{{ item.quantity }}
+                                                            {{ item.product.name }} x{{ item.quantity }}
                                                         </li>
                                                     {% endfor %}
                                                 </ul>
@@ -88,10 +88,10 @@
                     </li>
                     <li>
                         <div class="collapsible-header"><h5 class="header"><b>My</b> <em>Reviews:</em></h5></div>
-                        {% if review < 0 %}
+                        {% if reviews|length > 0 %}
                             {% for review in reviews %}
                                 <div class="collapsible-body">
-                                    <div class="card small hoverble">
+                                    <div class="card medium review">
                                         <div class="card-stacked">
                                             <div class="card-content">
                                                 <span class="card-title">{{ review.review_title }}</span>
@@ -110,7 +110,7 @@
                                 </div>
                             {% endfor %}
                         {% else %}
-                        <div class="collapsible-body"><p>You haven't posted any reviews yet!</p></div>
+                            <div class="collapsible-body"><p>You haven't posted any reviews yet!</p></div>
                         {% endif %}
                     </li>
                 </ul>
@@ -118,22 +118,64 @@
         </div>
     </section>
     <section class="grey-bg">
-        <div class="row">
-            <div class="col s12 m8 offset-m2 l6 offset-l3">
-                <h3 class="header">My Feed</h3>
-                <div class="divider"></div>
-                <div class="card horizontal">
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <textarea id="textarea1" class="materialize-textarea" placeholder="Add a Post!"></textarea>
+        <!--Posts-->
+        {% if posts|length > 0 %}
+            <div class="row">
+                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                    <h3><b>My</b> <em>Posts:</em>
+                        <a class="btn community right" href="{% url 'my_community' %}">My Community</a>
+                    </h3>
+                    <div class="divider"></div>
+                </div>
+                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                    {% for post in posts %}
+                        <div class="card horizontal">
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p class="card-title grey-text text-darken-4">
+                                        {% if user.profile.image %}
+                                            <img class="profile-image" src="{{ post.user_profile.userprofile.image.url }}" 
+                                                alt="Profile Image">
+                                        {% else %}
+                                            <img class="profile-image" src="{{ MEDIA_URL }}default_userprofile_pic.png"
+                                                alt="Default Profile Image">
+                                        {% endif %}
+                                        <a href="{% url 'user_posts' post.user_profile.user.id %}">{{ post.user_profile }}</a>
+                                    </p>
+                                    <div class="divider"></div>
+                                    <br>
+                                    <p class="post-content">
+                                        <a href="{% url 'post_detail' post.id %}">
+                                            {{ post.description }}
+                                        </a>
+                                    </p>
+                                    <br>
+                                    {% if post.image %}
+                                        <div class="card-image">
+                                            <a href="{% url 'post_detail' post.id %}">
+                                                <img src="{{ post.image.url }}">
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="card-action">
+                                    <p>{{ post.posted_on }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-action">
-                            <a href="#" class="btn right flow-text update-profo">Post</a>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
-        </div>
+        {% else %}
+            <div class="row">
+                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                    <h3><b>My</b> <em>Posts:</em></h3>
+                    <div class="divider"></div>
+                    <p>You haven't posted on the community feed yet</p>
+                    <a href="{% url 'my_community' %}" class="btn community">My Community</a>
+                </div>
+            </div>
+        {% endif %}
     </section>
 {% endblock %}
 
