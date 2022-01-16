@@ -718,6 +718,12 @@ footer ul li {
 }
 
 /*-------------------------- Media Queries */
+@media only screen and (max-width: 320px) {
+    .app-img {
+        width: inherit;
+    }
+}
+
 @media only screen and (max-width: 360px) {
     .add-to-bag {
         margin-top: 4px;
