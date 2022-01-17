@@ -145,13 +145,10 @@
         {% endblock %}
 
         {% block extra_js %}
-        <script type="text/javascript">
-            setTimeout(() => { 
-                const toasts = document.querySelectorAll('.custom-toast');
-                [...toasts].forEach(toast => {toast.style.display = 'none'})
-            }
-            , 30000);
-            
+        <script>
+            $('.close').click(function() {
+                $('.toast-header').parent().fadeOut();
+            })
         </script>
         {% endblock %}
 
