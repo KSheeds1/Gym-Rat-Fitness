@@ -14,8 +14,8 @@
             <div class="center-align users">
                 {% for user in users %}
                     <div class="chip center-align">
-                        {% if user.profile.image %}
-                            <img src="{{ userprofile.image.url }}" alt="Profile Image">
+                        {% if user.userprofile.image %}
+                            <img src="{{ user.userprofile.image.url }}" alt="Profile Image">
                         {% else %}
                             <img src="{{ MEDIA_URL }}default_userprofile_pic.png" alt="Profile Image">
                         {% endif %}
@@ -59,8 +59,8 @@
                     <div class="card-stacked">
                         <div class="card-content">
                             <p class="card-title grey-text text-darken-4">
-                                {% if user.profile.image %}
-                                    <img class="profile-image" src="{{ post.user_profile.userprofile.image.url }}" 
+                                {% if post.user_profile.user.userprofile.image %}
+                                    <img class="profile-image" src="{{ post.user_profile.user.userprofile.image.url }}" 
                                         alt="Profile Image">
                                 {% else %}
                                     <img class="profile-image" src="{{ MEDIA_URL }}default_userprofile_pic.png"

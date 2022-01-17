@@ -18,17 +18,17 @@
             <div class="col s12 m6 l6">
                 <div class="card body-colour profile-card">
                     <div class="row">
-                        {% if user.profile.image %}
-                            <img class="card-image col s3" src="{{ profile.image.url }}" alt="Profile Image">
+                        {% if user.userprofile.image %}
+                            <img class="profo-image col s3" src="{{ user.userprofile.image.url }}" alt="Profile Image">
                         {% else %}
-                        <img class="card-image col s3" src="{{ MEDIA_URL }}default_userprofile_pic.png" alt="Default Profile Image">
+                            <img class="card-image col s3" src="{{ MEDIA_URL }}default_userprofile_pic.png" alt="Default Profile Image">
                         {% endif %}
                         <div class="card-content  black-text col s9 white-text">
                             <span class="card-title black-text">{{ user.username }}</span>
                             {% if user.userprofile.about_me %}
                                 <p class="black-text"><em>{{ user.userprofile.about_me }}</em></p>
                             {% else %}
-                            <p class="black-text"><em>Add some info about you!</em></p>
+                                <p class="black-text"><em>Add some info about you!</em></p>
                             {% endif %}
                             <p class="black-text">Last logged in: {{ user.last_login }}</p>
                             <a href="{% url 'edit_profile' %}" class="btn flow-text update-profo"><b>Update Info</b></a>
@@ -133,8 +133,8 @@
                             <div class="card-stacked">
                                 <div class="card-content">
                                     <p class="card-title grey-text text-darken-4">
-                                        {% if user.profile.image %}
-                                            <img class="profile-image" src="{{ post.user_profile.userprofile.image.url }}" 
+                                        {% if post.user_profile.user.userprofile.image %}
+                                            <img class="profile-image" src="{{ post.user_profile.user.userprofile.image.url }}" 
                                                 alt="Profile Image">
                                         {% else %}
                                             <img class="profile-image" src="{{ MEDIA_URL }}default_userprofile_pic.png"
@@ -180,19 +180,25 @@
 {% endblock %}
 
 {% block extra_js %}
-{{ block.super }}
-<script type="text/javascript">
-    let countrySelected = $('.select-wrapper input.select-dropdown').val();
-    if(!countrySelected) {
-        $('.select-wrapper input.select-dropdown').css('color', '#b8b8b8');
-    };
-    $('.select-wrapper input.select-dropdown').change(function() {
-        countrySelected = $(this).val();
+    {{ block.super }}
+    <script type="text/javascript">
+        let countrySelected = $('.select-wrapper', 'input.select-dropdown').val();
         if(!countrySelected) {
-            $(this).css('color', '#b8b8b8');
-        } else {
-            $(this).css('color', '#000');
-        }
-    });
-</script>
+            $('.select-wrapper', 'input.select-dropdown').css('color', '#b8b8b8');
+        };
+        $('.select-wrapper', 'input.select-dropdown').change(function() {
+            countrySelected = $(this).val();
+            if(!countrySelected) {
+                $(this).css('color', '#b8b8b8');
+            } else {
+                $(this).css('color', '#000');
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $('#new-image').change(function() {
+            var file = $('#new-image')[0].files[0];
+            $('#filename').text(`Image will be set to: ${file.name}`);
+        });
+    </script>
 {% endblock %}
