@@ -552,6 +552,13 @@ input[name=image-clear]:not(.browser-default) {
 
 .close {
     float: right !important;
+    background-color: #F7F8F2;
+    color: #141414;
+}
+
+.toast-title {
+    padding-right: 200px;
+    margin-right: 25px;
 }
 
 .toast-body {
