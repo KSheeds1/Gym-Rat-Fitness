@@ -14,11 +14,6 @@
             <div class="center-align users">
                 {% for user in users %}
                     <div class="chip center-align">
-                        {% if user.userprofile.image %}
-                            <img src="{{ user.userprofile.image.url }}" alt="Profile Image">
-                        {% else %}
-                            <img src="{{ MEDIA_URL }}default_userprofile_pic.png" alt="Profile Image">
-                        {% endif %}
                         {{ user }}
                     </div>
                 {% endfor %}
@@ -66,12 +61,12 @@
                                     <img class="profile-image" src="{{ MEDIA_URL }}default_userprofile_pic.png"
                                         alt="Default Profile Image">
                                 {% endif %}
-                                <a href="{% url 'user_posts' post.user_profile.user.id %}">{{ post.user_profile }}</a>
+                                <a href="{% url 'user_posts' post.user_profile.user.id %}" title="View Users posts">{{ post.user_profile }}</a>
                             </p>
                             <div class="divider"></div>
                             <br>
                             <p class="post-content">
-                                <a href="{% url 'post_detail' post.id %}">
+                                <a href="{% url 'post_detail' post.id %}" title="View Post">
                                     {{ post.description }}
                                 </a>
                             </p>

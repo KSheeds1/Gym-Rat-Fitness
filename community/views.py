@@ -6,7 +6,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from profiles.models import UserProfile
 from .forms import NewPostForm, NewCommentForm
 from .models import Post
@@ -83,7 +82,7 @@ def post_detail(request, post_id):
     """ View to render a specific post """
 
     post = get_object_or_404(Post, pk=post_id)
-    user = get_object_or_404(UserProfile, user=request.user)
+    user = request.user
 
     if request.method == 'POST':
         form = NewCommentForm(request.POST)
@@ -104,6 +103,7 @@ def post_detail(request, post_id):
     context = {
         'post': post,
         'form': form,
+        'user': user,
     }
 
     return render(request, 'community/post_detail.html', context)
