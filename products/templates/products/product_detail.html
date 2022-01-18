@@ -85,29 +85,28 @@
                             <h3>Still not convinced?</h3>
                             <h4>See what our Gym Rats have to say!</h4>
                         </div>
-                        <div class="col s12 m6 offset-m3">
-                            <div class="carousel carousel-slider center">
-                                {% for review in reviews %}
-                                    <div class="carousel-item center">
-                                        <div class="card medium horizontal" class="review-card">
-                                            <div class="card-stacked">
-                                                <div class="card-content">
-                                                    <span class="card-title">{{ review.review_title }}</span>
-                                                    <p class="review-content">{{ review.review_content }}</p>
-                                                    {% if review.rating %}
-                                                        <p class="green-txt">
-                                                            <i class="fas fa-star"></i> {{ review.rating }} / 5
-                                                        </p>
-                                                    {% endif %}
-                                                </div>
-                                                <div class="card-action">
-                                                    <p>Reviewed By: {{ review.reviewer_name }} on the {{ review.review_date }}</p>
-                                                </div>
-                                            </div>
+                    </div>
+                    <div class="row">
+                        {% for review in reviews %}
+                            <div class="col s12 m6 lg2 xl4">
+                                <div class="card large" class="review-card">
+                                    <div class="card-stacked">
+                                        <div class="card-content">
+                                            <span class="card-title">{{ review.review_title }}</span>
+                                            <p class="review-content">{{ review.review_content }}</p>
+                                            {% if review.rating %}
+                                                <p class="green-txt">
+                                                    <i class="fas fa-star"></i> {{ review.rating }} / 5
+                                                </p>
+                                            {% endif %}
                                         </div>
-                                    </div> 
-                                {% endfor %}
+                                        <div class="card-action">
+                                            <p>Reviewed By: {{ review.reviewer_name }} on the {{ review.review_date }}</p>
+                                        </div>
+                                    </div>
+                                </div> 
                             </div>
+                        {% endfor %}
                         </div>
                         <div class="col s12 m12 center-align">
                             <h5>Are you currently completing {{ product.name }} or have already finished?</h5>
@@ -289,36 +288,34 @@
                         <h3>Still not convinced?</h3>
                         <h4>Checkout the reviews!</h4>
                     </div>
-                    <div class="col s12 m6 offset-m3">
-                        <div class="carousel carousel-slider center">
-                            {% for review in reviews %}
-                                <div class="carousel-item center">
-                                    <div class="card horizontal" class="review-card">
-                                        <div class="card-stacked">
-                                            <div class="card-content">
-                                                <span class="card-title">{{ review.review_title }}</span>
-                                                <p>{{ review.review_content }}</p>
-                                                {% if review.rating %}
-                                                    <p class="green-txt">
-                                                        <i class="fas fa-star"></i> {{ review.rating }} / 5
-                                                    </p>
-                                                {% endif %}
-                                            </div>
-                                            <div class="card-action">
-                                                <p>Reviewed By: {{ review.reviewer_name }} on the {{ review.review_date }}</p>
-                                                {% if request.user.userprofile == review.reviewer_name %}
-                                                    <a href="{% url 'edit_review' review.id %}" class="btn edit">Edit Review</a>
-                                                    <a class="delete btn modal-trigger" data-target="#modal-delete{{review.id}}"
-                                                        href="#modal-delete{{review.id}}">Delete
-                                                    </a>
-                                                {% endif %}
-                                            </div>
-                                        </div>
+                </div>
+                <div class="row">
+                    {% for review in reviews %}
+                        <div class="col s12 m6 lg2 xl4">
+                            <div class="card medium horizontal" class="review-card">
+                                <div class="card-stacked">
+                                    <div class="card-content">
+                                        <span class="card-title">{{ review.review_title }}</span>
+                                        <p>{{ review.review_content }}</p>
+                                        {% if review.rating %}
+                                            <p class="green-txt">
+                                                <i class="fas fa-star"></i> {{ review.rating }} / 5
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="card-action">
+                                        <p>Reviewed By: {{ review.reviewer_name }} on the {{ review.review_date }}</p>
+                                        {% if request.user.userprofile == review.reviewer_name %}
+                                            <a href="{% url 'edit_review' review.id %}" class="btn edit">Edit Review</a>
+                                            <a class="delete btn modal-trigger" data-target="#modal-delete{{review.id}}"
+                                                href="#modal-delete{{review.id}}">Delete
+                                            </a>
+                                        {% endif %}
                                     </div>
                                 </div>
-                            {% endfor %}
+                            </div>
                         </div>
-                    </div>
+                    {% endfor %}
                     <div class="col s12 m12 center-align">
                         <h5>Have you bought {{ product.name }}?</h5>
                         <h6>Leave a review of {{ product.name }} today</h6>
@@ -334,11 +331,6 @@
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
 
-<script type="text/javascript">
-    $('input[name=selected_price]').on('click', function(e){
-        $('input[name=selected_price]:checked').val();
-    });
-</script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('.modal').modal();
