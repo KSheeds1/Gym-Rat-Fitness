@@ -22,7 +22,9 @@
                                 <img class="profile-image" src="{{ MEDIA_URL }}default_userprofile_pic.png"
                                     alt="Default Profile Image">
                             {% endif %}
-                            <a href="">{{ post.user_profile }}</a>
+                            <a href="{% url 'user_posts' post.user_profile.user.id %}"
+                                title="View Users posts">{{ post.user_profile }}
+                            </a>
                         </p>
                         <div class="divider"></div>
                         <br>
@@ -35,7 +37,7 @@
                         {% endif %}
                     </div>
                     <div class="card-action">
-                        {% if post.user_profile.user == user %}
+                        {% if post.user_profile.user == request.user %}
                             <div class="buttons right">
                                 <a href="{% url 'edit_post' post.id %}" class="btn edit">Edit</a>
                                 <a href="{% url 'delete_post' post.id %}" class="btn delete">Delete</a>

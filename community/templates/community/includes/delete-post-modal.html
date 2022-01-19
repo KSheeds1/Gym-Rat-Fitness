@@ -1,0 +1,18 @@
+{% if post.user_profile.user == user %}
+    <!--Modal Structure-->
+    <div id="#modal-delete{{post.id}}" class="modal" aria-labelledby="modal-delete{{post.id}}Label"
+        aria-hidden="true">
+        <div class="modal-header center-align white-text">
+            <h4>Please confirm your choice</h4>
+        </div>
+        <div class="modal-content center-align">
+            <h5>Are you <em>sure</em> you want to delete your post?</h5>
+            <p class="red-text text-darken-4">This action is irreversible!</p>
+        </div>
+        <div class="divider"></div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close btn cancel">Cancel</a>
+            <a class="btn delete" href="{% url 'delete_post' post.id %}">Delete</a>
+        </div>
+    </div>
+{% endif %}
