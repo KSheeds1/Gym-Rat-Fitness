@@ -5,7 +5,13 @@
 {% block content %}
     {% if not product.category.name == 'merchandise' %}
         <div class="parallax-container">
-            <div class="parallax"><img src="{{ product.image.url }}" alt="{{ product.name }}" class="responsive-img"></div>
+            <div class="parallax">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="responsive-img">
+                {% else %}
+                    <img class="responsive-img" src="{{ MEDIA_URL }}noimg.png" alt="{{ product.name }}">
+                {% endif %}
+            </div>
             <div id="overlay">
                 <div class="text" class="flow-text center-align">{{ product.name }}
                     <br>
@@ -26,33 +32,39 @@
                                     <li>{{ product.length_of_time }}</li>
                                 </ul>
                                 {% if product.category.name == 'workout_programs' %}
-                                    <div>
-                                        <ul>
-                                            <h6><b>Training Styles:</b></h6>
-                                            <li>{{ product.training_styles }}</li>
-                                        </ul>
-
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <h6><b>Workout Durations:</b></h6>
-                                            <li>{{ product.workout_duration }}</li>
-                                        </ul>
-
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <h6><b>Program Goals:</b></h6>
-                                            <li>{{ product.program_goals }}</li>
-                                        </ul>
-                                    </div>
+                                    {% if product.training_styles %}
+                                        <div>
+                                            <ul>
+                                                <h6><b>Training Styles:</b></h6>
+                                                <li>{{ product.training_styles }}</li>
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                    {% if product.workout_duration %}
+                                        <div>
+                                            <ul>
+                                                <h6><b>Workout Durations:</b></h6>
+                                                <li>{{ product.workout_duration }}</li>
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                    {% if product.program_goals %}
+                                        <div>
+                                            <ul>
+                                                <h6><b>Program Goals:</b></h6>
+                                                <li>{{ product.program_goals }}</li>
+                                            </ul>
+                                        </div>
+                                    {% endif %}
                                 {% else %}
-                                    <div>
-                                        <ul>
-                                            <h6><b>Plan Features:</b></h6>
-                                            <li>{{ product.nutrition_plan_features|linebreaksbr }}</li>
-                                        </ul>
-                                    </div>
+                                    {% if product.nutrition_plan_features %}
+                                        <div>
+                                            <ul>
+                                                <h6><b>Plan Features:</b></h6>
+                                                <li>{{ product.nutrition_plan_features|linebreaksbr }}</li>
+                                            </ul>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             </div>
                         </div>
@@ -102,6 +114,13 @@
                                         </div>
                                         <div class="card-action">
                                             <p>Reviewed By: {{ review.reviewer_name }} on the {{ review.review_date }}</p>
+                                            {% if review.reviewer_name.user == user %}
+                                                <a href="{% url 'edit_review' review.id %}" class="btn edit">Edit Review</a>
+                                                <a class="delete btn modal-trigger" data-target="#modal-delete{{review.id}}"
+                                                    href="#modal-delete{{review.id}}">Delete
+                                                </a>
+                                                {% include 'products/includes/delete-review-modal.html' %}
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div> 
@@ -157,7 +176,7 @@
                                         </button>
                                         <input class="qty_input id_qty_{{ product.id }} center-align" type="number"
                                             name="quantity" value="1" min="1" max="99"
-                                            data-item_id="{{ product.id }}">
+                                            data-item_id="{{ product.id }}" readonly>
                                         <button class="increment-qty btn-flat btn-small body-colour
                                             increment-qty_{{ product.id }}" data-item_id="{{ product.id }}">
                                             <i class="fas fa-plus"></i>
@@ -168,7 +187,6 @@
                                     <div class="buttons">
                                         <a href="{{ request.META.HTTP_REFERER }}" class="btn keep-shopping">
                                             <span class="valign-wrapper"><i class="fas fa-chevron-left"></i> Keep Shopping</span>
-                                            
                                         </a>
                                         <input type="submit" class="add-to-bag btn valign-wrapper" value="Add to Bag">
                                     </div>
@@ -179,19 +197,19 @@
                     </div>
                     <div class="col s12">
                         {% if request.user.is_superuser %}
-                        <ul class="collapsible">
-                            <li>
-                                <div class="collapsible-header"><b>Product Management</b></div>
-                                <div class="collapsible-body center-align">
-                                    <a class="btn edit" href="{% url 'edit_product' product.id %}"><b>Edit Product</b></a>
-                                    <a class="delete btn modal-trigger" data-target="#modal-delete{{product.id}}"
-                                        href="#modal-delete{{product.id}}">Delete
-                                    </a>
-                                    {% include 'products/includes/modal-delete.html'%}
-                                </div>
-                            </li>
-                        </ul>
-                    {% endif %}
+                            <ul class="collapsible">
+                                <li>
+                                    <div class="collapsible-header"><b>Product Management</b></div>
+                                    <div class="collapsible-body center-align">
+                                        <a class="btn edit" href="{% url 'edit_product' product.id %}"><b>Edit Product</b></a>
+                                        <a class="delete btn modal-trigger" data-target="#modal-delete{{product.id}}"
+                                            href="#modal-delete{{product.id}}">Delete
+                                        </a>
+                                        {% include 'products/includes/modal-delete.html'%}
+                                    </div>
+                                </li>
+                            </ul>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -305,11 +323,12 @@
                                     </div>
                                     <div class="card-action">
                                         <p>Reviewed By: {{ review.reviewer_name }} on the {{ review.review_date }}</p>
-                                        {% if request.user.userprofile == review.reviewer_name %}
+                                        {% if review.reviewer_name.user == user %}
                                             <a href="{% url 'edit_review' review.id %}" class="btn edit">Edit Review</a>
                                             <a class="delete btn modal-trigger" data-target="#modal-delete{{review.id}}"
                                                 href="#modal-delete{{review.id}}">Delete
                                             </a>
+                                            {% include 'products/includes/delete-review-modal.html' %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -330,14 +349,4 @@
 {% block extra_js %}
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('.modal').modal();
-        $('.carousel.carousel-slider').carousel({
-            fullWidth: false,
-            indicators: true
-        });
-    });
-</script>
 {% endblock %}
