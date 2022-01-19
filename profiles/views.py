@@ -87,11 +87,10 @@ def add_profile(request):
     template = 'profiles/add_profile_info.html'
     context = {
         'form': form,
-        'filled_out': True
-
     }
 
     return render(request, template, context)
+
 
 @login_required
 def edit_profile(request):
