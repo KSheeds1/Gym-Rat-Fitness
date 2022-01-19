@@ -66,6 +66,34 @@ def order_history(request, order_number):
 
 
 @login_required
+def add_profile(request):
+    """ To add info to profile """
+    profile = get_object_or_404(UserProfile, user=request.user)
+
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, request.FILES,
+                               instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Added profile info')
+            return redirect(reverse('profile'))
+        else:
+            messages.error(request, 'Unable to add profile \
+                           information. Please ensure the form is \
+                           valid.')
+    else:
+        form = EditProfileForm()
+
+    template = 'profiles/add_profile_info.html'
+    context = {
+        'form': form,
+        'filled_out': True
+
+    }
+
+    return render(request, template, context)
+
+@login_required
 def edit_profile(request):
     """ To edit basic profile information """
     profile = get_object_or_404(UserProfile, user=request.user)
