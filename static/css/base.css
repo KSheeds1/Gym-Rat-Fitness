@@ -118,7 +118,7 @@ hr {
     color: #97A1D8;
 }
 
-a.update {
+.update-link {
     font-size: bold;
     background-color: #97A1D8;
     color: #F7F8F2;
@@ -126,7 +126,7 @@ a.update {
     display: inline-block;
 }
 
-a.update:hover {
+.update-link:hover {
     background-color: #F7F8F2;
     color: #97A1D8;
     cursor: pointer;
@@ -446,7 +446,6 @@ input[name=image-clear]:not(.browser-default) {
     pointer-events: auto;
 }
 
-
 /*-------------------------- Shopping Bag */
 .bag-container {
     width: 90%;
@@ -641,7 +640,7 @@ input[name=image-clear]:not(.browser-default) {
 }
 
 .allauth-form-inner-content input::placeholder {
-    color: #B8B8B8;
+    color: #757070;
 }
 
 .allauth-form-inner-content button,
