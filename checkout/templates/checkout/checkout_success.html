@@ -18,6 +18,14 @@
             <h5 class="center-align">Your order has been received! You will receive a confirmation email to {{ order.email }}</h5>
         </div>
         <div class="col s12 l6 offset-l3">
+            <div class="buttons center-align">
+                <a href="{% url 'home' %}" class="btn add-to-bag">Home</a>
+                {% if from_profile %}
+                <a href="{% url 'profile'%}" class="btn learn-more"><i class="fas fa-chevron-left"></i>Profile</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col s12 l6 offset-l3">
             <h4>Order Summary</h4>
             <fieldset>
                 <legend><b>Order Info</b></legend>
