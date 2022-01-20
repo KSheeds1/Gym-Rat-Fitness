@@ -10,6 +10,8 @@
         {% endblock %}
 
         {% block extra_meta %}
+        <meta name="keywords" content="Fitness Exercise Health">
+        <meta name="description" content="A fitness app for gym rats of all fitness levels! Join our community">
         {% endblock %}
 
         {% block corecss %}
@@ -76,11 +78,17 @@
                 </div>
             </div>
         </header>
-        <!--Floating action button for search functionality mobile/tablet-->
-        <div class="fixed-action-btn show-on-medium-and-down hide-on-large-only">
-            <a class="btn-floating btn-large search">
-                <i class="fas fa-search"></i>
+        <!--Floating action button for search-->
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large" id="FAB">
+                <i class="fas fa-bars"></i>
             </a>
+            <ul>
+                <li><a class="btn-floating search" id="search-btn"><i class="fas fa-search"></i></a></li>
+                <li><a class="btn-floating scroll-up"><i class="fas fa-arrow-circle-up"></i></a></li>
+                <li><a href="#" data-target="slide-out" class="btn-floating hide-on-med-and-up sidenav-trigger">
+                    <i class="fas fa-filter fa-2x filter-sidenav"></i></a></li>
+            </ul>
         </div>
 
         {% if messages %}
@@ -145,6 +153,22 @@
         {% endblock %}
 
         {% block extra_js %}
+        {{ block.super }}
+        <!--Scroll to the top-->
+        <script type="text/javascript">
+            $('.scroll-up').on('click', function() {
+                $('html, body').animate({scrollTop:0}, '300');
+            });
+        </script>
+        <!--Disable hoverEnabled option on floating action button for mobile & tablet viewports-->
+        <script type="text/javascript">
+        if (window.matchMedia("(max-width: 600px)").matches) {
+            $('.fixed-action-btn').floatingActionButton({
+                hoverEnabled: false
+            });
+        }
+        </script>
+        <!--Toast close functionality-->
         <script>
             $('.close').click(function() {
                 $('.toast-header').parent().fadeOut();

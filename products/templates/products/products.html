@@ -44,7 +44,7 @@
                         <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
                     </select>
                 </div>
-                <!--Mobile sort selector-->
+                <!-- Mobile sort selector -->
                 {% include 'products/includes/filter-sidenav.html' %}
             </div>
             <div class="col s12 m6 pull-m6 l6 pull-l6 xl6 pull-xl6">
@@ -115,33 +115,10 @@
             {% endfor %}
         </div>
     </section>
-    <!--Floating action button-->
-    <div class="fixed-action-btn">
-        <a class="btn-floating white">
-            <i class="fas fa-arrow-circle-up fa-2x shop-now"></i>
-        </a>
-        <a href="#" data-target="slide-out" class="btn-floating hide-on-med-and-up sidenav-trigger">
-            <i class="fas fa-filter fa-2x filter-sidenav"></i>
-        </a>            
-    </div>
 {% endblock %}
 
 {% block extra_js %}
     {{ block.super }}
-    <!--Scroll to the top-->
-    <script type="text/javascript">
-		$('.scroll-up').on('click', function() {
-            $('html, body').animate({scrollTop:0}, '300');
-        });
-	</script>
-    <!--Disable hoverEnabled option on floating action button for mobile & tablet viewports-->
-    <script type="text/javascript">
-     if (window.matchMedia("(max-width: 600px)").matches) {
-         $('.fixed-action-btn').floatingActionButton({
-             hoverEnabled: false
-         });
-     }
-    </script>
     <!--Sort selectbox selection-->
     <script type="text/javascript">
         $('#sort-selector').change(function(){
