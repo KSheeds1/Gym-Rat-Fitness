@@ -151,30 +151,14 @@ hr {
     font-family: "Abril Fatface", sans-serif;
 }
 
-nav ul a {
-    background-color: #141414;
-}
-
-nav ul li a:hover {
+nav ul li a i:hover {
     background-color: #F7F8F2;
     color: #141414;
 }
 
-nav ul li i:hover {
-    background-color: #F7F8F2;
-    color: #141414;
-}
-
-.i.fas.fa-chevron-left {
-    padding-right: 2rem;
-}
-
-input.add-to-bag {
-    font-family: "Raleway", sans-serif;
-}
 
 /*-------------------------- Nav Dropdowns */
-.dropdown-content li a {
+.dropdown-content li a:hover {
     background-color: #141414;
     color: #F7F8F2;
 }
@@ -208,6 +192,7 @@ i.fas.fa-shopping-bag {
 .sidenav li a i {
     margin: 0 5px 0 0;
 }
+
 
 /*-------------------------- Delivery Banner */
 #delivery-banner {
@@ -750,34 +735,6 @@ footer ul li {
         margin-top: 2px;
     }
 
-}
-
-@media only screen and (max-width: 414px) {
-    .filter-sidenav {
-        background-color: #AED914;
-    }
-
-    .select-wrapper .caret {
-        fill: #F7F8F2;
-    }
-
-    .select-wrapper input.select-dropdown {
-        color: #F7F8F2;
-    }
-
-    select {
-        background-color: #141414 !important;
-        color: #F7F8F2 !important;
-    }
-
-    .dropdown-content li>span {
-        background-color: rgba(20, 20, 20, 1.2);
-        color: #F7F8F2;
-    }
-
-    .select-dropdown.dropdown-content li.selected {
-        background-color: #3a3939;
-    }
 }
 
 @media only screen and (max-width: 600px) {
