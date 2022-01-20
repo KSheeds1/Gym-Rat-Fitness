@@ -66,7 +66,7 @@ def edit_review(request, review_id):
                 UserProfile.objects.get(user=request.user))
             form.save()
             messages.success(request, 'Review updated')
-            return redirect('profile')
+            return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request, 'Successfully updated review')
     else:
@@ -92,4 +92,4 @@ def delete_review(request, review_id):
         return redirect('home')
     messages.error(request, 'Sorry, you can only delete your \
                    own reviews')
-    return redirect('home')
+    return redirect(reverse('product_detail', args=[product.id]))
