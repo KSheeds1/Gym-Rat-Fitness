@@ -40,7 +40,10 @@
                         {% if post.user_profile.user == request.user %}
                             <div class="buttons right">
                                 <a href="{% url 'edit_post' post.id %}" class="btn edit">Edit</a>
-                                <a href="{% url 'delete_post' post.id %}" class="btn delete">Delete</a>
+                                <a class="delete btn modal-trigger" data-target="#modal-delete{{post.id}}"
+                                    href="#modal-delete{{post.id}}">Delete
+                                </a>
+                                {% include 'community/includes/delete-post-modal.html' %}
                             </div>
                         {% endif %}
                         <p>{{ post.posted_on }}</p>
