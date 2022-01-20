@@ -50,7 +50,7 @@
                     <ul class="nav-dark">
                         <li><a href="{% url 'our_community' %}"><span class="white-text">Our Community</span></a></li>
                         {% if request.user.is_authenticated %}
-                            <li><a href="{% url 'my_community' %}">My Community</a></li>
+                            <li><a href="{% url 'my_community' %}"><span class="white-text">My Community</span></a></li>
                         {% endif %}
                     </ul>
                 </div>
