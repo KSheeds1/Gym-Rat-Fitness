@@ -1,6 +1,29 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 /*----------------------------Delivery info form*/
 #profile-update-form .form-control {
     color: #141414;
+}
+
+#profile-update-form input::-webkit-input-placeholder {
+    color: #b8b8b8;
+}
+
+#profile-update-form input::-moz-placeholder {
+    color: #b8b8b8;
+}
+
+#profile-update-form input:-ms-input-placeholder {
+    color: #b8b8b8;
+}
+
+#profile-update-form input::-ms-input-placeholder {
+    color: #b8b8b8;
 }
 
 #profile-update-form input::placeholder {
