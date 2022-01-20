@@ -31,7 +31,7 @@
         <!--Sort selector-->
         <div class="row">
             <div class="col s12 m6 push-m6 l6 push-l6 xl6 push-xl6">
-                <div class="input-field col s12 hide-on-small-only">
+                <div class="input-field col s12">
                     <select id="sort-selector" class="browser-default custom-select {% if current_sorting != 'None_None' %}grey-text text-darken-1{% else %}black-text{% endif %}">
                         <option value="reset"  {% if current_sorting == 'None_None' %}selected{% endif %}disabled selected>Filter by..</option>
                         <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
@@ -40,12 +40,8 @@
                         <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
                         <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
                         <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
-                        <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
-                        <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
                     </select>
                 </div>
-                <!-- Mobile sort selector -->
-                {% include 'products/includes/filter-sidenav.html' %}
             </div>
             <div class="col s12 m6 pull-m6 l6 pull-l6 xl6 pull-xl6">
                 <h6 class="grey-text text-darken-3 lighten-3 left-align product-count">
