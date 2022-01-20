@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}500 Error{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <h2>Something went wrong</h2>
+            <p>We seem to be having trouble on our end, sorry about that!</p>
+            <p>Find your way home with one of these</p>
+            <div class="buttons">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'profile' %}">Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
