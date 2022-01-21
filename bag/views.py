@@ -44,7 +44,6 @@ def adjust_bag(request, item_id):
 
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
-    redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
 
     if quantity > 0:
@@ -70,7 +69,7 @@ def remove_from_bag(request, item_id):
         bag = request.session.get('bag', {})
         bag.pop(item_id)
         messages.success(request, f'Removed {product.name} '
-                                  f'from your bag')
+                         f'from your bag')
 
         request.session['bag'] = bag
         return HttpResponse(status=200)

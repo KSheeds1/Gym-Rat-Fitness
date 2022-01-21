@@ -53,7 +53,9 @@ def get_products(request):
                                criteria")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = (
+                Q(name__icontains=query) | Q(description__icontains=query))
+
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -149,6 +151,7 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
+    """ Allows superusers to delete products """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do \
                        that.')

@@ -21,6 +21,7 @@ class ProductForm(forms.ModelForm):
                           for c in categories]
 
         placeholders = {
+            'category': 'Category',
             'sku': 'SKU',
             'name': 'Name',
             'description': 'Description',
