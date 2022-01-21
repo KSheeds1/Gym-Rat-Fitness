@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 // Get Stripe public key and client secret from the template
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
@@ -30,7 +31,8 @@ card.mount('#card-element');
 
 //Handle realtime validation errors on the card element
 card.addEventListener('change', function (event) {
-    var errorDiv = document.getElementById('card-errors');
+   
+  var errorDiv = document.getElementById('card-errors');
     if (event.error) {
         var html = `
             <span class="icon" role="alert">
@@ -113,6 +115,6 @@ form.addEventListener('submit', function(ev) {
         });
     }).fail(function () {
         location.reload();
-    })
+    });
 });
 

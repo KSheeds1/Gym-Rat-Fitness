@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 $(document).ready(function(){
     $(".dropdown-trigger").dropdown({
         coverTrigger: false
