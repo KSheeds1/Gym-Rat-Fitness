@@ -195,24 +195,6 @@
 
 {% block extra_js %}
     {{ block.super }}
-    <script type="text/javascript">
-        let countrySelected = $('.select-wrapper', 'input.select-dropdown').val();
-        if(!countrySelected) {
-            $('.select-wrapper', 'input.select-dropdown').css('color', '#b8b8b8');
-        };
-        $('.select-wrapper', 'input.select-dropdown').change(function() {
-            countrySelected = $(this).val();
-            if(!countrySelected) {
-                $(this).css('color', '#b8b8b8');
-            } else {
-                $(this).css('color', '#000');
-            }
-        });
-    </script>
-    <script type="text/javascript">
-        $('#new-image').change(function() {
-            var file = $('#new-image')[0].files[0];
-            $('#filename').text(`Image will be set to: ${file.name}`);
-        });
-    </script>
+    <script src="{% static 'profiles/js/country_select.js' %}"></script>
+    <script src="{% static 'profiles/js/new_image.js' %}"></script>
 {% endblock %}

@@ -12,8 +12,8 @@
                     <img class="responsive-img" src="{{ MEDIA_URL }}noimg.png" alt="{{ product.name }}">
                 {% endif %}
             </div>
-            <div id="overlay">
-                <div class="text" class="flow-text center-align">{{ product.name }}
+            <div class="overlay">
+                <div class="text flow-text center-align">{{ product.name }}
                     <br>
                     <a href="#join" class="btn-small center-align learn-more"><b>Join Today</b></a>
                 </div>
@@ -28,14 +28,14 @@
                         <div class="card program-cards">
                             <div class="card-content program-card-content center-align black-text">
                                 <ul>
-                                    <h6><b>{% if product.category.name == 'workout_programs' %}Program Duration:{% else %}Plan Duration{% endif %}</b></h6>
+                                    <li><h6><b>{% if product.category.name == 'workout_programs' %}Program Duration:{% else %}Plan Duration{% endif %}</b></h6></li>
                                     <li>{{ product.length_of_time }}</li>
                                 </ul>
                                 {% if product.category.name == 'workout_programs' %}
                                     {% if product.training_styles %}
                                         <div>
                                             <ul>
-                                                <h6><b>Training Styles:</b></h6>
+                                                <li><h6><b>Training Styles:</b></h6></li>
                                                 <li>{{ product.training_styles }}</li>
                                             </ul>
                                         </div>
@@ -43,7 +43,7 @@
                                     {% if product.workout_duration %}
                                         <div>
                                             <ul>
-                                                <h6><b>Workout Durations:</b></h6>
+                                                <li><h6><b>Workout Durations:</b></h6></li>
                                                 <li>{{ product.workout_duration }}</li>
                                             </ul>
                                         </div>
@@ -51,7 +51,7 @@
                                     {% if product.program_goals %}
                                         <div>
                                             <ul>
-                                                <h6><b>Program Goals:</b></h6>
+                                                <li><h6><b>Program Goals:</b></h6></li>
                                                 <li>{{ product.program_goals }}</li>
                                             </ul>
                                         </div>
@@ -60,7 +60,7 @@
                                     {% if product.nutrition_plan_features %}
                                         <div>
                                             <ul>
-                                                <h6><b>Plan Features:</b></h6>
+                                                <li><h6><b>Plan Features:</b></h6></li>
                                                 <li>{{ product.nutrition_plan_features|linebreaksbr }}</li>
                                             </ul>
                                         </div>
@@ -101,7 +101,7 @@
                     <div class="row">
                         {% for review in reviews %}
                             <div class="col s12 m6 lg2 xl4">
-                                <div class="card large" class="review-card">
+                                <div class="card large review-card">
                                     <div class="card-stacked">
                                         <div class="card-content">
                                             <span class="card-title">{{ review.review_title }}</span>
@@ -126,7 +126,6 @@
                                 </div> 
                             </div>
                         {% endfor %}
-                        </div>
                         <div class="col s12 m12 center-align">
                             <h5>Are you currently completing {{ product.name }} or have already finished?</h5>
                             <h6>Leave a review of {{ product.name }} today</h6>
@@ -310,7 +309,7 @@
                 <div class="row">
                     {% for review in reviews %}
                         <div class="col s12 m6 lg2 xl4">
-                            <div class="card medium horizontal" class="review-card">
+                            <div class="card large horizontal review-card">
                                 <div class="card-stacked">
                                     <div class="card-content">
                                         <span class="card-title">{{ review.review_title }}</span>

@@ -21,7 +21,6 @@ class ProductForm(forms.ModelForm):
                           for c in categories]
 
         placeholders = {
-            'category': 'Categories',
             'sku': 'SKU',
             'name': 'Name',
             'description': 'Description',
@@ -44,4 +43,3 @@ class ProductForm(forms.ModelForm):
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
-            self.fields['image'].label = True

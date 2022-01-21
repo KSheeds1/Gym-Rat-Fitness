@@ -4,9 +4,9 @@
 
 {% block content %}          
     <div class="parallax-container">
-        <div class="parallax"><img src="{{ MEDIA_URL }}programparallax1.jpg" class="responsive-img"></div>
-        <div id="overlay">
-            <div class="text" class="flow-text center-align">Take the first step in your new journey
+        <div class="parallax"><img src="{{ MEDIA_URL }}programparallax1.jpg" class="responsive-img" alt="Site Image"></div>
+        <div class="overlay">
+            <div class="text flow-text center-align">Take the first step in your new journey
                 <br>
                 <a href="{% url 'products' %}?category=workout_programs" class="btn-small shop-now"><b>Shop Programs Now</b></a>
             </div>
@@ -27,10 +27,14 @@
                             <div class="col s12 m12 l4 xl4">
                                 <div class="card program-card-img medium hoverable">
                                     <div class="card-image">
-                                        <img src="{{ product.image.url }}" class="responsive-img">
+                                        {% if product.image %}
+                                            <img src="{{ product.image.url }}" class="responsive-img" alt="{{ product.name }}">
+                                        {% else %}
+                                            <img class="responsive-img" src="{{ MEDIA_URL }}noimg.png" alt="{{ product.name }}">
+                                        {% endif %}
                                     </div>
-                                    <div id="overlay">
-                                        <div class="text" class="flow-text center-align">{{ product.name }}
+                                    <div class="overlay">
+                                        <div class="text flow-text center-align">{{ product.name }}
                                             <br>
                                             <a href="{% url 'product_detail' product.id %}" class="btn-small learn-more black-text">Learn More</a>
                                         </div>
@@ -60,11 +64,11 @@
             </div>
         </div>
     </div>
-    <section>
+    <section class="parallax">
         <div class="parallax-container">
-            <div class="parallax"><img src="{{ MEDIA_URL }}nutrition-parallax2.jpg" class="responsive-img"></div>
-            <div id="overlay">
-                <div class="text" class="flow-text center-align">Everything you need in one app
+            <div class="parallax"><img src="{{ MEDIA_URL }}nutrition-parallax2.jpg" class="responsive-img" alt="Site Image"></div>
+            <div class="overlay">
+                <div class="text flow-text center-align">Everything you need in one app
                     <br>
                     <a href="{% url 'products' %}?category=nutrition_plans" class="btn-small shop-now"><b>Shop Nutrition Now</b></a>
                 </div>
@@ -92,9 +96,9 @@
                             </div>
                             <div>
                                 <ul>
-                                    <h6><b>Program Price - Once-off payment:</b></h6>
+                                    <li><p><b>Program Price - Once-off payment:</b></p></li>
                                     <li>€79.99</li>
-                                    <h6><b>Nutrition Plan Price - Once-off payment:</b></h6>
+                                    <li><p><b>Nutrition Plan Price - Once-off payment:</b></p></li>
                                     <li>€59.99</li>
                                 </ul>
                                 <hr>
@@ -106,11 +110,11 @@
         </div>
     </div>   
     <!--Merch page-->
-    <section>
+    <section class="parallax">
         <div class="parallax-container">
-            <div class="parallax"><img src="{{ MEDIA_URL }}merch-img-min.jpg" class="responsive-img"></div>
-            <div id="overlay">
-                <div class="text" class="flow-text center-align">Short on equipment?
+            <div class="parallax"><img src="{{ MEDIA_URL }}merch-img-min.jpg" class="responsive-img" alt="Site Image"></div>
+            <div class="overlay">
+                <div class="text flow-text center-align">Short on equipment?
                     <br>
                     <a href="{% url 'products' %}?category=merchandise" class="btn-small shop-now black-text"><b>Shop Merch Now</b></a>
                 </div>

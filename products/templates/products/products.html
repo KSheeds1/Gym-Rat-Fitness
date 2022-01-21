@@ -6,9 +6,9 @@
         <!--Category dependent parallax & header-->
         <div class="parallax-container">
             {% for c in current_categories %}
-                <div class="parallax"><img src="{{ c.image.url }}" class="responsive-img"></div>
-                <div id="overlay">
-                    <div class="text" class="flow-text center-align">Everything you need in one app
+                <div class="parallax"><img src="{{ c.image.url }}" class="responsive-img" alt="Site Image"></div>
+                <div class="overlay">
+                    <div class="text flow-text center-align">Everything you need in one app
                         <br>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
             <div class="col s12 m6 push-m6 l6 push-l6 xl6 push-xl6">
                 <div class="input-field col s12">
                     <select id="sort-selector" class="browser-default custom-select {% if current_sorting != 'None_None' %}grey-text text-darken-1{% else %}black-text{% endif %}">
-                        <option value="reset"  {% if current_sorting == 'None_None' %}selected{% endif %}disabled selected>Filter by..</option>
+                        <option value="reset"  {% if current_sorting == 'None_None' %}selected{% endif %}>Filter by..</option>
                         <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                         <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
                         <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high</option>
@@ -116,28 +116,7 @@
 {% block extra_js %}
     {{ block.super }}
     <!--Sort selectbox selection-->
-    <script type="text/javascript">
-        $('#sort-selector').change(function(){
-            var selector = $(this);
-            var currentUrl = new URL(window.location);
-
-            var selectedVal = selector.val();
-            if(selectedVal != "reset"){
-                var sort = selectedVal.split("_")[0];
-                var direction = selectedVal.split("_")[1];
-
-                currentUrl.searchParams.set("sort", sort);
-                currentUrl.searchParams.set("direction", direction);
-
-                window.location.replace(currentUrl);
-            } else {
-                currentUrl.searchParams.delete("sort");
-                currentUrl.searchParams.delete("direction");
-
-                window.location.replace(currentUrl);
-            }
-        });
-    </script>
+    <script src="{% static 'products/js/sort.js' %}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('.modal').modal();
