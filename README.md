@@ -1057,6 +1057,7 @@ $ git push
 
 # Credits
 ## Code
+* This [medium article](https://towardsdatascience.com/build-a-social-media-website-with-django-feed-app-backend-part-4-d82facfa7b3) was extremely helpful in implementing the My community app
 ## Content
 * Majority of the descriptions provided for the products found in the merchandise category on this site were sourced from [HP Nutrition's 'Shakers & Accessories' Category](https://www.hpnutrition.ie/Gym-Gear-Accessories) and [JD Sports 'Accessories Hub'](https://www.jdsports.ie/page/accessories-hub/) - The brand and product names were changed, only the descriptions of the products were used and slightly modified to fit the sites purpose.
 ## Media 
