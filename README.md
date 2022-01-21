@@ -4,37 +4,36 @@ Beginning your fitness journey can be an overwhelming experience and it can be d
 
 # Demo
 Visit the live site [here](https://gym-rat-fitness.herokuapp.com/)
-INSERT AM I RESPONSIVE IMG HERE
+![Responsive img](Documents/README-IMGS/resp-img.png)
 
 # Contents:
-* [UX]()
-	* [User Stories]() 
-	* [Strategies]()
-	* [Scope]()
-	* [Structure]()
-	* [Skeleton]()
-	* [Surface]()
-* [Features]()
-	* [Existing features]()
-	* [Features left to implement]()
-* [Technologies Used]()
-	* [Languages]()
-	* [Frameworks, packages, libraries and toolkits]()
-* [Database]()
-	* [Schema]()
-	* [Breakdown of schema]()
-* [Testing]()
-* [Deployment]()
-	* [Git]() 
-	* [GitHub]()
-	* [Heroku]()
-	* [AWS]()
-	* [Email]()
-* [Credits]()
-	* [Code]()
-	* [Content]()
-	* [Media]()
-	* [Acknowledgements]()
+* [UX](#UX)
+	* [User Stories](#user-stories) 
+	* [Strategies](#strategies)
+	* [Scope](#scope)
+	* [Structure](#structure)
+	* [Skeleton](#skeleton)
+	* [Surface](#surface)
+* [Features](#features)
+	* [Existing features](#existing-features)
+	* [Features left to implement](#features-left-to-implement)
+* [Technologies Used](#technologies-used)
+	* [Languages](#languages)
+	* [Frameworks, packages, libraries and toolkits](#frameworks,-packages,-libraries-and-toolkits)
+* [Database](#database)
+	* [Schema](#schema)
+* [Testing](#testing)
+* [Deployment](#deployment)
+	* [Git](#git) 
+	* [GitHub](#github)
+	* [Heroku](#heroku)
+	* [AWS](#aws)
+	* [Email](#email)
+* [Credits](#credits)
+	* [Code](#code)
+	* [Content](#content)
+	* [Media](#media)
+	* [Acknowledgements](#acknowledgements)
 
 # UX 
 ## User Stories
@@ -111,23 +110,38 @@ User feedback is provided throughout the site to aid user actions. This is all c
  
 ## Skeleton
  **Wireframes:**
-Wireframes were created for each HTML file across a variety of viewports (mobile, tablet/iPad, laptop/desktop).
+Wireframes were created for each HTML file across a variety of viewports (mobile, tablet/iPad, laptop/desktop). The site evolved beyond on the wireframes quite a bit during developement.
 The wireframes for each can be viewed here:
-[Home]()
-[Programs]()
-[Program Details]()
-[Nutrition]()
-[Nutrition Details]()
-[Community]()
-[Profile]()
-[Bag]()
-[Login]()
-[Sign Up]()
+
+[Home](Documents/wireframes/Home_Landing_pg.png)
+
+[Programs](Documents/wireframes/Programs.png)
+
+[Program Details](Documents/wireframes/Program_details.png)
+
+[Nutrition](Documents/wireframes/Nutrition.png)
+
+[Nutrition Details](Documents/wireframes/Nutrition_details.png)
+
+[My Community](Documents/wireframes/My_Community.png)
+
+[Profile](Documents/wireframes/My_Profile.png)
+
+[Checkout](Documents/wireframes/Checkout.png)
+
+[Merchandise](Documents/wireframes/Merch.png)
+
+[Merchandise Details](Documents/wireframes/Merch_details.png)
+
+[Login](Documents/wireframes/Login.png)
+
+[Sign Up](Documents/wireframes/Register.png)
 
 ## Surface
  **Aesthetic:** As the app is orientated towards a fitness demographic, I wanted to keep the feel of the site modern, clean and bright with pops of accent colours.
   
- **Colour Palette:** I chose to use 5 colours throughout the site, base colours and accent colours.
+ **Colour Palette:** I chose to use 5 colours throughout the site, 2 base colours and 3 accent colours.
+ ![color palette](Documents/README-IMGS/GRF-Color-Palette.png)
 
 **Typography:**
 

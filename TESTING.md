@@ -1,20 +1,14 @@
 Testing documentation for Gym Rat Fitness
 # Contents:
-* [Testing User Stories]()
-* [Bugs: Discovered & Resolved]()
-* [Automated Testing]()
-* [Manual Functionality Testing]()
-	* [User Authentication]()
-	* [Stripe]()
-	* [CRUD Operations]()
-	* [Features]()
-	* [Cancel Functionality]()
-* [Validation Testing]()
-* [Lighthouse Performance]()
-* [Cross-browser]()
-* [Responsive Testing]()
-* [Known Issues and Bugs]()
-* [Notes]()
+* [Testing User Stories](#testing-user-stories)
+* [Bugs: Discovered & Resolved](#bugs:-discovered-&-resolved)
+* [Manual Functionality Testing](#manual-functionality-testing)
+* [Validation Testing](#validation-testing)
+* [Lighthouse Performance](#lighthouse-performance)
+* [Cross-browser](#cross-browser)
+* [Responsive Testing](#responsive-testing)
+* [Known Issues and Bugs](#known-issues-and-bugs)
+* [Notes](#notes)
 
 ## Testing User Stories
 >UST1: **_As a casual unregistered user, I want to be able to:_**
@@ -784,7 +778,10 @@ The views.py files were validated using [PEP8 Online](http://pep8online.com/). T
 
 
 ## Lighthouse Performance
-Coming to the end of the development stage for the project, a lighthouse report was generated using [Chrome Dev Tools](https://developers.google.com/web/tools/lighthouse). The initial scores suggested some improvements could be made.
+Coming to the end of the development stage for the project, a lighthouse report was generated using [Chrome Dev Tools](https://developers.google.com/web/tools/lighthouse). The final score for lighthouse were ok. The performance was particularly poor due to the parallax used across the site. But Accessibility, Best Practices, and SEO tested much better. 
+
+![Lighthouse](Documents/README-IMGS/lighthouse.png)
+
 
 ## Cross-browser
 To test for cross-browser compatibility, the site was tested using [PowerMapper](https://www.powermapper.com/). Cross-browser compatibility tested well. 
