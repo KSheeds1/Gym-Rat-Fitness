@@ -8,7 +8,7 @@ $('.update').click(function(e) {
 // Remove item and reload on click
 $('.remove-item').click(function(e) {
     var csrfToken = "{{ csrf_token }}";
-    var itemId = $(this).attr('class').split('remove_')[1];
+    var itemId = $(this).attr('id').split('remove_')[1];
     var url = `/bag/remove/${itemId}/`;
     var data = {'csrfmiddlewaretoken': csrfToken};
 
@@ -16,4 +16,4 @@ $('.remove-item').click(function(e) {
     .done(function() {
         location.reload();
     });
-});
+}); 
